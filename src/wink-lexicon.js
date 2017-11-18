@@ -26,7 +26,7 @@
 //
 // A portion of this data is derived from the fnTBL project. The fnTBL is
 // copyright by Johns Hopkins University and Radu Florian and Grace Ngai.
-// It is sourced from github repo www.cs.jhu.edu/~rflorian/fntbl/index.html,
+// It is sourced from www.cs.jhu.edu/~rflorian/fntbl/index.html,
 // licensed under the MIT "like" License. You may obtain a copy of the License
 // at www.cs.jhu.edu/~rflorian/fntbl/license.html.
 
