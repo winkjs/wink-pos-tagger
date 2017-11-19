@@ -22,7 +22,7 @@
 
 //
 var helpers = require( 'wink-helpers' );
-var winkLexicon = require( './wink-lexicon.js' );
+var winkLexicon = require( './lexicon/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 
 var posTagger = function ( ) {

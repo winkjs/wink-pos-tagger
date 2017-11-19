@@ -22,50 +22,26 @@
 
 //
 // Defines the morphological rules for guessing the POS for unknown words.
-var unknownWordsPOS = {
-  s: 'NNS',
-  ss: 'NN',
-  ing: 'VBG',
-  ed: 'VBN',
-  ly: 'RB',
-  ble: 'JJ',
-  al: 'JJ',
-  ous: 'JJ',
-  ic: 'JJ'
-};
+var unknownWordsPOS = require( './lexicon/unknown-words.js' );
 
 // POS for `tag`!
-var tagPOS = {
-  number: 'CD',
-  email: 'NNP',
-  mention: 'NNP',
-  hashtag: 'HT',
-  url: 'NN',
-  emoticon: 'M',
-  emoji: 'M',
-  time: 'JJ'
-};
+var tagPOS = require( './lexicon/tags.js' );
 
 // POS for punctuations.
-var punctuationPOS = {
-  '.': '.',
-  '!': '.',
-  '?': '.',
-  '[': '(',
-  '{': '(',
-  '(': '(',
-  ']': ')',
-  '}': ')',
-  ')': ')',
-  ',': ',',
-  ':': ':',
-  ';': ':',
-  '-': ':',
-  '…': ':',
-  '"': '"',
-  '\'': '"'
-};
+var punctuationPOS = require( './lexicon/punctuations.js' );
 
+// ### unigramPOSTagger
+/**
+ *
+ * Tags a single input `token` using the `lexicon`. Attempts to apply
+ * morphological rules if the look up fails. Finally falls bact to NN!
+ *
+ * @param {object} token — that needs to be tagged; must follow wink-tokenizer.
+ * standards.
+ * @param {object} lexicon — containing word/pos key/value pairs.
+ * @return {object} the tagged token.
+ * @private
+*/
 var unigramPOSTagger = function ( token, lexicon ) {
   var word = token.token.toLowerCase();
   // Finish off with punctuations first.

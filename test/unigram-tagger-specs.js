@@ -3,7 +3,7 @@
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
 var tag = require( '../src/unigram-tagger.js' );
-var lexicon = require( '../src/wink-lexicon.js' );
+var lexicon = require( '../src/lexicon/lexicon.js' );
 // var tk = require( 'wink-tokenizer' )().tokenize;
 
 var expect = chai.expect;
@@ -61,5 +61,9 @@ describe( 'basic test cycle', function () {
 
   it( 'tag an unknown plural noun', function () {
       expect( tag( { token: 'chairpersons', tag: 'word' }, lexicon ) ).to.deep.equal( { token: 'chairpersons', tag: 'word', pos: 'NNS' } );
+  } );
+
+  it( 'tag an unknown adjective', function () {
+      expect( tag( { token: 'ludicrous', tag: 'word' }, lexicon ) ).to.deep.equal( { token: 'ludicrous', tag: 'word', pos: 'JJ' } );
   } );
 } );

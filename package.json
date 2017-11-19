@@ -16,7 +16,7 @@
     "test": "istanbul cover _mocha ./test/",
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "sourcedocs": "docker -i src -o ./sourcedocs --sidebar no",
-    "docs": "documentation build src/** -f html -o docs -c docs-toc.yml",
+    "docs": "documentation build src/wink-tokenizer.js -f html -o docs -c docs-toc.yml",
     "hint": "jshint ./src/*.js ./test/*.js ./runkit/*.js",
     "lint": "eslint ./src/*.js ./test/*.js ./runkit/*.js"
   },
