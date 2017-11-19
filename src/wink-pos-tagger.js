@@ -25,11 +25,38 @@ var helpers = require( 'wink-helpers' );
 var winkLexicon = require( './lexicon/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 
+// ### posTagger
+/**
+ *
+ * Creates an instance of **`wink-pos-tagger`**.
+ *
+ * @return {methods} object conatining set of API methods for pos-tagging a sentence,
+ * and for defining related configuration.
+ * @example
+ * // Load wink tokenizer.
+ * var tagger = require( 'wink-pos-tagger' );
+ * // Create your instance of wink tokenizer.
+ * var myTagger = tagger();
+*/
 var posTagger = function ( ) {
 
   // Returned!
   var methods = Object.create( null );
 
+  // ### updateLexicon
+  /**
+   *
+   * Updates the internal lexicon using the input `lexicon`. If a word/pos pair
+   * is found in the internal lexicon then it's value is updated with the new pos;
+   * otherwise it added.
+   *
+   * @param {object} lexicon — containing **`word/pos`** pairs to be added to or
+   * replaced in the existing lexicon.
+   * @return {undefined} Nothing!
+   * @throws {Error} if `lexicon` is not a valid JS object.
+   * @example
+   * updateLexicon( { Obama: 'NNP' } );
+  */
   var updateLexicon = function ( lexicon ) {
     if ( !helpers.validate.isObject( lexicon ) ) {
       throw Error( 'wink-pos-tagger/updateLexicon: lexicon must be an object, instead found: ' + JSON.stringify( lexicon ) );

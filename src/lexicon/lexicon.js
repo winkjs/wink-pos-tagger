@@ -31,7 +31,7 @@
 // at www.cs.jhu.edu/~rflorian/fntbl/license.html.
 
 /* eslint max-lines: [ 'error', 15000 ] */
-/** @private */
+/** @ignore */
 var lexicon = Object.create( null );
 lexicon[ '\''] = 'POS';
 lexicon[ '\'d' ] = 'MD';

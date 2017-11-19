@@ -33,6 +33,46 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#creating-an-instance'
+                  class="h5 bold black caps">
+                  Creating an Instance
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#postagger'
+                  class="">
+                  posTagger
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#api-methods'
+                  class="h5 bold black caps">
+                  API Methods
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updatelexicon'
+                  class="">
+                  updateLexicon
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -71,6 +111,191 @@ Software Foundation, version 3 of the License.</p>
   
 </section>
 </div>
+          
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='creating-an-instance' class='mt0'>
+    Creating an Instance
+  </h2>
+
+  
+    
+
+  
+</section>
+</div>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='postagger'>
+      posTagger
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates an instance of <strong><code>wink-pos-tagger</code></strong>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>posTagger(): methods</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>methods</code>:
+        object conatining set of API methods for pos-tagging a sentence,
+and for defining related configuration.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Load wink tokenizer.</span>
+<span class="hljs-keyword">var</span> tagger = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-pos-tagger'</span> );
+<span class="hljs-comment">// Create your instance of wink tokenizer.</span>
+<span class="hljs-keyword">var</span> myTagger = tagger();</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='api-methods' class='mt0'>
+    API Methods
+  </h2>
+
+  
+    
+
+  
+</section>
+</div>
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updatelexicon'>
+      updateLexicon
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Updates the internal lexicon using the input <code>lexicon</code>. If a word/pos pair
+is found in the internal lexicon then it's value is updated with the new pos;
+otherwise it added.</p>
+
+
+  <div class='pre p1 fill-light mt0'>updateLexicon(lexicon: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>lexicon</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    — containing 
+<strong><code>word/pos</code></strong>
+ pairs to be added to or
+replaced in the existing lexicon.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+        Nothing!
+
+      
+    
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
+<code>lexicon</code>
+ is not a valid JS object.
+</li>
+      
+    </ul>
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>updateLexicon( { <span class="hljs-attr">Obama</span>: <span class="hljs-string">'NNP'</span> } );</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
           
         
       </div>
