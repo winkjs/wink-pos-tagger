@@ -54,4 +54,12 @@ describe( 'basic test cycle', function () {
   it( 'tag an eos punctuation', function () {
       expect( tag( { token: '!', tag: 'punctuation' }, lexicon ) ).to.deep.equal( { token: '!', tag: 'punctuation', pos: '.' } );
   } );
+
+  it( 'tag an unknown un-adjective', function () {
+      expect( tag( { token: 'uneasy', tag: 'word' }, lexicon ) ).to.deep.equal( { token: 'uneasy', tag: 'word', pos: 'JJ' } );
+  } );
+
+  it( 'tag an unknown plural noun', function () {
+      expect( tag( { token: 'chairpersons', tag: 'word' }, lexicon ) ).to.deep.equal( { token: 'chairpersons', tag: 'word', pos: 'NNS' } );
+  } );
 } );
