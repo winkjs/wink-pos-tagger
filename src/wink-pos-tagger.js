@@ -22,7 +22,7 @@
 
 //
 var helpers = require( 'wink-helpers' );
-var lex = require( './wink-lexicon.js' );
+var winkLexicon = require( './wink-lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 
 var posTagger = function ( ) {
@@ -32,14 +32,14 @@ var posTagger = function ( ) {
 
   var updateLexicon = function ( lexicon ) {
     if ( !helpers.validate.isObject( lexicon ) ) {
-      throw Error( 'wink-pos-tagger: defineLexicon: lexicon must be an object, instead found: ' + typeof lexicon );
+      throw Error( 'wink-pos-tagger/updateLexicon: lexicon must be an object, instead found: ' + JSON.stringify( lexicon ) );
     }
-    Object.assign( lex, lexicon );
+    Object.assign( winkLexicon, lexicon );
   }; // updateLexicon()
 
   var tag = function ( tokens ) {
     tokens.forEach( function ( t ) {
-      unigramPOSTagger( t, lex );
+      unigramPOSTagger( t, winkLexicon );
     } );
 
     return tokens;
