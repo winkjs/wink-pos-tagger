@@ -6,7 +6,7 @@ English Part-of-speech (POS) tagger
 
 [<img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >](http://winkjs.org/)
 
-Perform **`pos`** (part-of-speech) tagging of english sentences using **`wink-pos-tagger`**. It is a part of [wink](http://winkjs.org/) — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
+Perform part-of-speech tagging of english sentences using **`wink-pos-tagger`**. It is a part of [wink](http://winkjs.org/) — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
 
 ### Installation
 
