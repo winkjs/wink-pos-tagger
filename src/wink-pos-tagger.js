@@ -24,6 +24,7 @@
 var helpers = require( 'wink-helpers' );
 var winkLexicon = require( './lexicon/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
+var applyContextRules = require( './rules-engine.js' );
 
 // ### posTagger
 /**
@@ -68,7 +69,7 @@ var posTagger = function ( ) {
     tokens.forEach( function ( t ) {
       unigramPOSTagger( t, winkLexicon );
     } );
-
+    applyContextRules( tokens );
     return tokens;
   }; // tagTokens();
 

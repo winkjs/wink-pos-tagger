@@ -44,6 +44,6 @@
   "runkitExampleFilename": "./runkit/example.js",
   "dependencies": {
     "wink-helpers": "^1.2.0",
-    "wink-tokenizer": "^1.1.0"
+    "wink-tokenizer": "^2.0.1"
   }
 }

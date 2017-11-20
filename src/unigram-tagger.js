@@ -43,10 +43,10 @@ var punctuationPOS = require( './lexicon/punctuations.js' );
  * @private
 */
 var unigramPOSTagger = function ( token, lexicon ) {
-  var word = token.token.toLowerCase();
+  var word = token.value.toLowerCase();
   // Finish off with punctuations first.
   if ( token.tag === 'punctuation' ) {
-    token.pos = punctuationPOS[ token.token ];
+    token.pos = punctuationPOS[ token.value ];
     return token;
   }
   // Start with tag lookup!
