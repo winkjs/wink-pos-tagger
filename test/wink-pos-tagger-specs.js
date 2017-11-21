@@ -20,6 +20,21 @@ describe( 'wink-pos-tagger test cycle', function () {
       expect( tag( tk( 'this is a simple sentence' ) ) ).to.deep.equal( output );
   } );
 
+  it( 'tag a little more complex sentence', function () {
+      var output = [ { value: 'The', tag: 'word', pos: 'DT' },
+                     { value: 'horses', tag: 'word', pos: 'NNS' },
+                     { value: 'were', tag: 'word', pos: 'VBD' },
+                     { value: 'broken', tag: 'word', pos: 'VBN' },
+                     { value: 'in', tag: 'word', pos: 'IN' },
+                     { value: 'and', tag: 'word', pos: 'CC' },
+                     { value: 'ridden', tag: 'word', pos: 'VBN' },
+                     { value: 'in', tag: 'word', pos: 'IN' },
+                     { value: 'two', tag: 'word', pos: 'CD' },
+                     { value: 'weeks', tag: 'word', pos: 'NNS' },
+                     { value: '.', tag: 'punctuation', pos: '.' } ];
+      expect( tag( tk( 'The horses were broken in and ridden in two weeks.' ) ) ).to.deep.equal( output );
+  } );
+
   it( 'tag a sentence triggering delta rule', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
                      { value: 'would', tag: 'word', pos: 'MD' },

@@ -22,8 +22,11 @@
 /* eslint-disable no-console */
 //
 const K = require( './rules/consts.js' );
-var posContextRules = require( './rules/pos-rules.js' );
-var valueContextRules = require( './rules/value-rules.js' );
+
+var posCRsGE0 = require( './rules/pos-rules-ge0.js' );
+var valueCRsGE0 = require( './rules/value-rules-ge0.js' );
+var posCRsLE0 = require( './rules/pos-rules-le0.js' );
+var valueCRsLE0 = require( './rules/value-rules-le0.js' );
 
 var testValueAtDelta = function ( tokens, cti, rule ) {
   var tAti = tokens[ rule.operand.delta + cti ];
@@ -69,8 +72,10 @@ var applyContextRule = function ( tokens, contextRules ) {
 }; // executeContextRule()
 
 var applyContextRules = function ( tokens ) {
-  applyContextRule( tokens, valueContextRules );
-  applyContextRule( tokens, posContextRules );
+  applyContextRule( tokens, valueCRsLE0 );
+  applyContextRule( tokens, posCRsLE0 );
+  applyContextRule( tokens, valueCRsGE0 );
+  applyContextRule( tokens, posCRsGE0 );
 };
 
 module.exports = applyContextRules;

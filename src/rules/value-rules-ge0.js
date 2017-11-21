@@ -74,14 +74,6 @@ module.exports = {
         {
           rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^IN$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'DT'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^VBD$/ }
           ],
           thenPosAt: 0,
@@ -103,36 +95,6 @@ module.exports = {
           ],
           thenPosAt: 0,
           willBe: 'DT'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^like$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^MD$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^while$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^the$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'JJ'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^take$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
         },
         {
           rules: [
@@ -161,26 +123,11 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^taking$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^outside$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
           thenPosAt: 0,
           willBe: 'JJ'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^took$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^over$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
         },
         {
           rules: [
@@ -195,35 +142,6 @@ module.exports = {
   VBP: [
          {
            rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^n't$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^need$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NN'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^earnings$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NN'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^not$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
-         {
-           rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^market$/ }
            ],
            thenPosAt: 0,
@@ -231,35 +149,7 @@ module.exports = {
          },
          {
            rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^a$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NN'
-         },
-         {
-           rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^be$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -3, -1 ] }, matches: /^does$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^did$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^do$/ }
            ],
            thenPosAt: 0,
            willBe: 'VB'
@@ -278,13 +168,6 @@ module.exports = {
            thenPosAt: 0,
            willBe: 'VBD'
          },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -3, -1 ] }, matches: /^let$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         }
   ], // VBP
   JJ: [
         {
@@ -392,14 +275,6 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^to$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^open$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^late$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^IN$/ }
           ],
@@ -417,14 +292,6 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^next$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^NNS$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'IN'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^now$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NNS$/ }
           ],
@@ -438,14 +305,6 @@ module.exports = {
           ],
           thenPosAt: 0,
           willBe: 'RB'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^chief$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^NN$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
         },
         {
           rules: [
@@ -475,24 +334,8 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^own$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^RB$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^Commercial$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NNP$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NNP'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^Western$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^NNP$/ }
           ],
           thenPosAt: 0,
           willBe: 'NNP'
@@ -512,6 +355,15 @@ module.exports = {
           ],
           thenPosAt: 0,
           willBe: 'RBR'
+        },
+        {
+          rules: [
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^further$/ },
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^.$/ },
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 2 }, matches: /^ZZZ$/ }
+          ],
+          thenPosAt: 0,
+          willBe: 'RB'
         }
   ], // JJ
   JJS: [
@@ -535,34 +387,11 @@ module.exports = {
   NN: [
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^n't$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^executive$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
           thenPosAt: 0,
           willBe: 'JJ'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^who$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBP'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^is$/ },
-                    // This ensure are is not the first word in the sentence!
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -2 }, matches: /^[a-z]+$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
         },
         {
           rules: [
@@ -582,23 +411,6 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^SCI$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^TV$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NNP'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^chief$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^operating$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^officer$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^official$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
@@ -612,22 +424,6 @@ module.exports = {
           ],
           thenPosAt: 0,
           willBe: 'JJ'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^are$/ },
-                    // This ensure are is not the first word in the sentence!
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -2 }, matches: /^[a-z]+$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^began$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
         },
         {
           rules: [
@@ -655,20 +451,6 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^be$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBN'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^help$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^half$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
@@ -685,39 +467,8 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^CD$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NNP'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^firm$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'JJ'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^been$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^,$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^closing$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^third$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
           ],
           thenPosAt: 0,
           willBe: 'JJ'
@@ -731,13 +482,6 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^begin$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NNS$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 2 }, matches: /^VBD$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^shares$/ }
@@ -747,39 +491,17 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^not$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^holding$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
           thenPosAt: 0,
           willBe: 'VBG'
         },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^offering$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^IN$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VBG'
-        }
   ], // NN
   VBD: [
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^by$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBN'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^been$/ }
            ],
            thenPosAt: 0,
            willBe: 'VBN'
@@ -792,43 +514,8 @@ module.exports = {
            thenPosAt: 0,
            willBe: 'VBN'
          },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -3, -1 ] }, matches: /^being$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBN'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^the$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBN'
-         }
   ], // VBD
   VBN: [
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^that$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBD'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^which$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBD'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^helped$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VB'
-         },
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^IN$/ },
@@ -838,14 +525,6 @@ module.exports = {
            thenPosAt: 0,
            willBe: 'NN'
          },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^an$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^expected$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'JJ'
-         }
   ], // VBN
   NNP: [
          {
@@ -932,73 +611,17 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^NNS$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'WDT'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^either$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^IN$/ }
           ],
           thenPosAt: 0,
           willBe: 'CC'
-        }
+        },
   ], // DT
-  POS: [
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^'s$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^that$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^That$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^'s$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^'s$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^EX$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         }
-  ], // POS
   NNS: [
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^the$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^plans$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^NNP$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^Mr.$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'VBZ'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^who$/ }
            ],
            thenPosAt: 0,
            willBe: 'VBZ'
@@ -1021,14 +644,6 @@ module.exports = {
          },
          {
            rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^yen$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -2 }, matches: /^IN$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NN'
-         },
-         {
-           rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^a$/ }
            ],
            thenPosAt: 0,
@@ -1036,14 +651,6 @@ module.exports = {
          }
   ], // NNS
   RB: [
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^down$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^VB$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
-        },
         {
           rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^TO$/ },
@@ -1094,62 +701,14 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^up$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^VBN$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
-        },
-        {
-          rules: [
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^overseas$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ }
           ],
           thenPosAt: 0,
           willBe: 'JJ'
         },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^off$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^VB$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RP'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^to$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^back$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'VB'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^the$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^back$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        }
   ], // RB
   WDT: [
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^CC$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'DT'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^IN$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'DT'
-         },
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^that$/ },
@@ -1159,47 +718,7 @@ module.exports = {
            willBe: 'IN'
          }
   ], // WDT
-  VB: [
-        {
-          rules: [
-                    { op: K.TEST_VALUE_IN_RANGE, operand: { property: 'value', range: [ -2, -1 ] }, matches: /^'s$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^date$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^TO$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^declined$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^comment$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        }
-  ], // VB
   VBZ: [
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^the$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NNS'
-         },
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^phone$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^calls$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NNS'
-         },
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^of$/ }
@@ -1209,14 +728,6 @@ module.exports = {
          }
   ], // VBZ
   RBR: [
-         {
-           rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^earlier$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'JJR'
-         },
          {
            rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^higher$/ }
@@ -1262,14 +773,6 @@ module.exports = {
   VBG: [
          {
            rules: [
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^selling$/ },
-                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: -1 }, matches: /^DT$/ }
-           ],
-           thenPosAt: 0,
-           willBe: 'NN'
-         },
-         {
-           rules: [
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$/ },
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^operating$/ },
                      { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 1 }, matches: /^profit$/ }
@@ -1286,33 +789,6 @@ module.exports = {
            willBe: 'NN'
          }
   ], // VBG
-  RP: [
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^,$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'RB'
-        }
-  ], // RP
-  CD: [
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^no$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^one$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        },
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^No$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^one$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        }
-  ], // CD
   FW: [
         {
           rules: [
@@ -1332,15 +808,5 @@ module.exports = {
            thenPosAt: 0,
            willBe: 'RBR'
          }
-  ], // JJR
-  MD: [
-        {
-          rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^will$/ },
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^good$/ }
-          ],
-          thenPosAt: 0,
-          willBe: 'NN'
-        }
-  ], // MD
+  ] // JJR
 };
