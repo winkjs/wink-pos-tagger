@@ -47,35 +47,36 @@ var operation = Object.create( null );
 operation[ K.TEST_VALUE_AT_DELTA ] = testValueAtDelta;
 operation[ K.TEST_VALUE_IN_RANGE ] = testValueInRange;
 
-var applyPosRules = function ( tokens, cti, posRule ) {
+var applyPosRules = function ( tokens, cti, posRule, poses ) {
   var rules = posRule.rules;
   var change = true;
   for ( var i = 0, imax = rules.length; ( i < imax && change ); i += 1 ) {
     change = operation[ rules[ i ].op ]( tokens, cti, rules[ i ] );
   }
-  if ( change ) {
+  // Trigger change only if the new `pos` is a valid one — present in `poses`.
+  if ( change && poses[ cti ].indexOf( posRule.willBe ) !== -1 ) {
     tokens[ posRule.thenPosAt + cti ].pos = posRule.willBe;
     return true;
   }
   return false;
 }; // executePosRules()
 
-var applyContextRule = function ( tokens, contextRules ) {
+var applyContextRule = function ( tokens, contextRules, poses ) {
   var posRules;
   var i, imax, j, jmax;
   for ( i = 0, imax = tokens.length; i < imax; i += 1 ) {
     posRules = contextRules[ tokens[ i ].pos ];
     if ( posRules ) {
-      for ( j = 0, jmax = posRules.length; j < jmax && !applyPosRules( tokens, i, posRules[ j ] ); j += 1);
+      for ( j = 0, jmax = posRules.length; j < jmax && !applyPosRules( tokens, i, posRules[ j ], poses ); j += 1);
     }
   }
 }; // executeContextRule()
 
-var applyContextRules = function ( tokens ) {
-  applyContextRule( tokens, valueCRsLE0 );
-  applyContextRule( tokens, posCRsLE0 );
-  applyContextRule( tokens, valueCRsGE0 );
-  applyContextRule( tokens, posCRsGE0 );
+var applyContextRules = function ( tokens, poses ) {
+  applyContextRule( tokens, valueCRsLE0, poses );
+  applyContextRule( tokens, posCRsLE0, poses );
+  applyContextRule( tokens, valueCRsGE0, poses );
+  applyContextRule( tokens, posCRsGE0, poses );
 };
 
 module.exports = applyContextRules;

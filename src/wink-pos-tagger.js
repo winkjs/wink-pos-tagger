@@ -66,10 +66,12 @@ var posTagger = function ( ) {
   }; // updateLexicon()
 
   var tag = function ( tokens ) {
+    // Array of "array each possible pos" for each token.
+    var poses = [];
     tokens.forEach( function ( t ) {
-      unigramPOSTagger( t, winkLexicon );
+      poses.push( unigramPOSTagger( t, winkLexicon ) );
     } );
-    applyContextRules( tokens );
+    applyContextRules( tokens, poses );
     return tokens;
   }; // tagTokens();
 

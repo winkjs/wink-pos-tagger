@@ -39,30 +39,42 @@ var punctuationPOS = require( './lexicon/punctuations.js' );
  * @param {object} token — that needs to be tagged; must follow wink-tokenizer.
  * standards.
  * @param {object} lexicon — containing word/pos key/value pairs.
- * @return {object} the tagged token.
+ * @return {array} the array of all possible part-of-speeches.
  * @private
 */
 var unigramPOSTagger = function ( token, lexicon ) {
   var word = token.value.toLowerCase();
+  // Arrray of pos for the word from lexicon.
+  var poses;
   // Finish off with punctuations first.
   if ( token.tag === 'punctuation' ) {
     token.pos = punctuationPOS[ token.value ];
-    return token;
+    return [ token.pos ];
   }
   // Start with tag lookup!
-  token.pos = tagPOS[ token.tag ] ||
-              // Didn't work, try dictionary lookup.
-              ( lexicon[ word ] ||
+  token.pos = tagPOS[ token.tag ];
+  if ( token.pos === undefined ) {
+    // Didn't work, try dictionary lookup.
+    poses = lexicon[ word ];
+    token.pos = ( poses ) ? poses[ 0 ] :
                 // Still struggling, time to apply morphological rules.
                 // Their sequence of application is important: match the longest
                 // one first!
                 ( unknownWordsPOS[ word.slice( -3 ) ] ||
                   ( unknownWordsPOS[ word.slice( -2 ) ] ||
-                      unknownWordsPOS[ word.slice( -1 ) ] ) ) );
-  if ( word.slice( 0, 2 ) === 'un' && lexicon[ word.slice( 2 ) ] ) token.pos = 'JJ';
-  // Nothing worked, fall back to noun!
-  token.pos = token.pos || 'NN';
-  return token;
+                      unknownWordsPOS[ word.slice( -1 ) ] ) );
+    if ( !token.pos && word.slice( 0, 2 ) === 'un' && lexicon[ word.slice( 2 ) ] ) {
+      token.pos = 'JJ';
+    } else {
+      // Nothing worked, fall back to noun!
+      token.pos = token.pos || 'NN';
+    }
+  } else {
+    // Tag POS is returned.
+    return [ token.pos ];
+  }
+  // The `poses` can be undefined in case of unknown words, un-adjectives & NN fallback.
+  return ( poses ) ? poses : [ token.pos ];
 }; // unigramPOSTagger();
 
 module.exports = unigramPOSTagger;
