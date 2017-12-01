@@ -47,3 +47,22 @@ describe( 'wink-pos-tagger test cycle', function () {
       expect( tag( tk( 'I would like to eat a banana.' ) ) ).to.deep.equal( output );
   } );
 } );
+
+describe( 'wink-pos-tagger update lexiconn test cycle', function () {
+  it( 'tag a I eat', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'eat', tag: 'word', pos: 'VBP' } ];
+      expect( tagger.tag( tk( 'I eat' ) ) ).to.deep.equal( output );
+  } );
+
+  it( 'update lexicon incorrectly throws error', function () {
+      expect( tagger.updateLexicon.bind( null ) ).to.throw( 'wink-pos-tagger/updateLexicon: lexicon must be an object, instead found: undefined' );
+  } );
+
+  it( 'update lexicon to make eat as noun & again tag', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'eat', tag: 'word', pos: 'NN' } ];
+      expect( tagger.updateLexicon( { eat: [ 'NN' ] } ) ).to.deep.equal( undefined );
+      expect( tagger.tag( tk( 'I eat' ) ) ).to.deep.equal( output );
+  } );
+} );
