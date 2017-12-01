@@ -3,7 +3,7 @@
 var chai = require( 'chai' );
 var mocha = require( 'mocha' );
 var tag = require( '../src/unigram-tagger.js' );
-var lexicon = require( '../src/lexicon/lexicon.js' );
+var lexicon = require( 'wink-lexicon/src/lexicon.js' );
 // var tk = require( 'wink-tokenizer' )().tokenize;
 
 var expect = chai.expect;
