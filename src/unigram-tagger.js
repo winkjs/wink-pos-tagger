@@ -22,13 +22,13 @@
 
 //
 // Defines the morphological rules for guessing the POS for unknown words.
-var unknownWordsPOS = require( './lexicon/unknown-words.js' );
+var unknownWordsPOS = require( 'wink-lexicon/src/unknown-words.js' );
 
 // POS for `tag`!
-var tagPOS = require( './lexicon/tags.js' );
+var tagPOS = require( 'wink-lexicon/src/tags.js' );
 
 // POS for punctuations.
-var punctuationPOS = require( './lexicon/punctuations.js' );
+var punctuationPOS = require( 'wink-lexicon/src/punctuations.js' );
 
 // ### unigramPOSTagger
 /**
