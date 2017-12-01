@@ -31,8 +31,8 @@ var applyContextRules = require( './rules-engine.js' );
  *
  * Creates an instance of **`wink-pos-tagger`**.
  *
- * @return {methods} object conatining set of API methods for pos-tagging a sentence,
- * and for defining related configuration.
+ * @return {methods} object conatining set of API methods for pos-tagging — [tag](#tag)
+ * and for updating lexicon — [updateLexicon](#updatelexicon).
  * @example
  * // Load wink tokenizer.
  * var tagger = require( 'wink-pos-tagger' );
@@ -52,11 +52,12 @@ var posTagger = function ( ) {
    * otherwise it added.
    *
    * @param {object} lexicon — containing **`word/pos`** pairs to be added to or
-   * replaced in the existing lexicon.
+   * replaced in the existing lexicon. The `pos` should be an array containing
+   * pos tags, with the first one as the most frequently used POS.
    * @return {undefined} Nothing!
    * @throws {Error} if `lexicon` is not a valid JS object.
    * @example
-   * updateLexicon( { Obama: 'NNP' } );
+   * myTagger.updateLexicon( { Obama: [ 'NNP' ] } );
   */
   var updateLexicon = function ( lexicon ) {
     if ( !helpers.validate.isObject( lexicon ) ) {
@@ -65,6 +66,32 @@ var posTagger = function ( ) {
     Object.assign( winkLexicon, lexicon );
   }; // updateLexicon()
 
+  // ### tag
+  /**
+   *
+   * Tags the input `tokens` with their **pos**.
+   *
+   * @param {object[]} tokens — to be pos tagged. They are array of objects and
+   * must follow the [**`wink-tokenizer`**](http://winkjs.org/wink-tokenizer/)
+   * standard.
+   * @return {object[]} pos tagged `tokens`.
+   * @example
+   * // Get `tokenizer` method from the instance of `wink-tokenizer`.
+   * var tokenize = require( 'wink-tokenizer' )().tokenize;
+   * // Tag the tokenized sentence.
+   * myTagger.tag( tokenize( 'I finished the whole pizza as I was feeling hungry.' ) );
+   * // -> [ { value: 'I', tag: 'word', pos: 'PRP' },
+   * //      { value: 'finished', tag: 'word', pos: 'VBD' },
+   * //      { value: 'the', tag: 'word', pos: 'DT' },
+   * //      { value: 'whole', tag: 'word', pos: 'JJ' },
+   * //      { value: 'pizza', tag: 'word', pos: 'NN' },
+   * //      { value: 'as', tag: 'word', pos: 'IN' },
+   * //      { value: 'I', tag: 'word', pos: 'PRP' },
+   * //      { value: 'was', tag: 'word', pos: 'VBD' },
+   * //      { value: 'feeling', tag: 'word', pos: 'VBG' },
+   * //      { value: 'hungry', tag: 'word', pos: 'JJ' },
+   * //      { value: '.', tag: 'punctuation', pos: '.' } ]
+  */
   var tag = function ( tokens ) {
     // Array of "array each possible pos" for each token.
     var poses = [];

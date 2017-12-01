@@ -12,7 +12,7 @@
   ],
   "main": "src/wink-pos-tagger.js",
   "scripts": {
-    "pretest": "npm run lint && npm run hint",
+    "pretest": "npm run lint && npm run hint && npm run docs",
     "test": "istanbul cover _mocha ./test/",
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "sourcedocs": "docker -i src -o ./sourcedocs --sidebar no",

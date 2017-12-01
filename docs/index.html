@@ -73,6 +73,16 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#tag'
+                  class="">
+                  tag
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -164,8 +174,12 @@ Software Foundation, version 3 of the License.</p>
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>methods</code>:
-        object conatining set of API methods for pos-tagging a sentence,
-and for defining related configuration.
+        object conatining set of API methods for pos-tagging — 
+<a href="#tag">tag</a>
+
+and for updating lexicon — 
+<a href="#updatelexicon">updateLexicon</a>
+.
 
       
     
@@ -248,7 +262,10 @@ otherwise it added.</p>
 	    — containing 
 <strong><code>word/pos</code></strong>
  pairs to be added to or
-replaced in the existing lexicon.
+replaced in the existing lexicon. The 
+<code>pos</code>
+ should be an array containing
+pos tags, with the first one as the most frequently used POS.
 
           </div>
           
@@ -285,7 +302,102 @@ replaced in the existing lexicon.
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'>updateLexicon( { <span class="hljs-attr">Obama</span>: <span class="hljs-string">'NNP'</span> } );</pre>
+      <pre class='p1 overflow-auto round fill-light'>myTagger.updateLexicon( { <span class="hljs-attr">Obama</span>: [ <span class="hljs-string">'NNP'</span> ] } );</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='tag'>
+      tag
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Tags the input <code>tokens</code> with their <strong>pos</strong>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>tag(tokens: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>tokens</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>>)</code>
+	    — to be pos tagged. They are array of objects and
+must follow the 
+<a href="http://winkjs.org/wink-tokenizer/"><strong><code>wink-tokenizer</code></strong></a>
+
+standard.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
+        pos tagged 
+<code>tokens</code>
+.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Get `tokenizer` method from the instance of `wink-tokenizer`.</span>
+<span class="hljs-keyword">var</span> tokenize = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-tokenizer'</span> )().tokenize;
+<span class="hljs-comment">// Tag the tokenized sentence.</span>
+myTagger.tag( tokenize( <span class="hljs-string">'I finished the whole pizza as I was feeling hungry.'</span> ) );
+<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'finished', tag: 'word', pos: 'VBD' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'whole', tag: 'word', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: 'pizza', tag: 'word', pos: 'NN' },</span>
+<span class="hljs-comment">//      { value: 'as', tag: 'word', pos: 'IN' },</span>
+<span class="hljs-comment">//      { value: 'I', tag: 'word', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'was', tag: 'word', pos: 'VBD' },</span>
+<span class="hljs-comment">//      { value: 'feeling', tag: 'word', pos: 'VBG' },</span>
+<span class="hljs-comment">//      { value: 'hungry', tag: 'word', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
     
   
 
