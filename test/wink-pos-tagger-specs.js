@@ -66,6 +66,35 @@ describe( 'wink-pos-tagger test cycle', function () {
   } );
 } );
 
+describe( 'wink-pos-tagger entity test cycle', function () {
+  it( 'tag a sentence with entity', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'live', tag: 'word', pos: 'VBP' },
+                     { value: 'in', tag: 'word', pos: 'IN' },
+                     { value: 'denmark', tag: 'word', pos: 'NNP', entity: 'location' } ];
+      expect( tagger.tag( [
+                            { value: 'I', tag: 'word' },
+                            { value: 'live', tag: 'word' },
+                            { value: 'in', tag: 'word' },
+                            { value: 'denmark', tag: 'word', pos: 'NNP', entity: 'location' } ]
+       ) ).to.deep.equal( output );
+  } );
+
+  it( 'tag the same sentence without pos undefined at NER time', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'live', tag: 'word', pos: 'VBP' },
+                     { value: 'in', tag: 'word', pos: 'IN' },
+                     { value: 'denmark', tag: 'word', pos: 'NN', entity: 'location' } ];
+      expect( tagger.tag( [
+                            { value: 'I', tag: 'word' },
+                            { value: 'live', tag: 'word' },
+                            { value: 'in', tag: 'word' },
+                            { value: 'denmark', tag: 'word', entity: 'location' } ]
+       ) ).to.deep.equal( output );
+  } );
+
+} );
+
 describe( 'wink-pos-tagger update lexicon test cycle', function () {
   it( 'tag a I eat', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
