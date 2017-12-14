@@ -1,6 +1,6 @@
 {
   "name": "wink-pos-tagger",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "English Part-of-speech (POS) tagger",
   "keywords": [
     "POS",
@@ -44,7 +44,7 @@
   "runkitExampleFilename": "./runkit/example.js",
   "dependencies": {
     "wink-helpers": "^1.2.0",
-    "wink-lexicon": "^1.0.0",
+    "wink-lexicon": "^1.1.0",
     "wink-tokenizer": "^2.0.1"
   }
 }
