@@ -46,9 +46,15 @@ describe( 'wink-pos-tagger test cycle', function () {
                      { value: '.', tag: 'punctuation', pos: '.' } ];
       expect( tag( tk( 'I would like to eat a banana.' ) ) ).to.deep.equal( output );
   } );
+
+  it( 'check WDT rule: seems so Indian English!', function () {
+      var output = [ { value: 'what', tag: 'word', pos: 'WDT' },
+                     { value: 'rachna', tag: 'word', pos: 'NN' } ];
+      expect( tag( tk( 'what rachna' ) ) ).to.deep.equal( output );
+  } );
 } );
 
-describe( 'wink-pos-tagger update lexiconn test cycle', function () {
+describe( 'wink-pos-tagger update lexicon test cycle', function () {
   it( 'tag a I eat', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
                      { value: 'eat', tag: 'word', pos: 'VBP' } ];

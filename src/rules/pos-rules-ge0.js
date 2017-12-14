@@ -225,5 +225,14 @@ module.exports = {
            thenPosAt: 0,
            willBe: 'RBS'
          }
-  ] // JJS
+  ], // JJS
+  WP: [
+    {
+      rules: [
+                { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^NN$|^NNS$/ }
+      ],
+      thenPosAt: 0,
+      willBe: 'WDT'
+    }
+  ] // WP
 };
