@@ -43,6 +43,8 @@ var punctuationPOS = require( 'wink-lexicon/src/punctuations.js' );
  * @private
 */
 var unigramPOSTagger = function ( token, lexicon ) {
+  // If token is an **entity with pos defined**, no tagging is needed.
+  if ( token.entity && token.pos ) return [ token.pos ];
   var word = token.value.toLowerCase();
   // Arrray of pos for the word from lexicon.
   var poses;
