@@ -52,6 +52,18 @@ describe( 'wink-pos-tagger test cycle', function () {
                      { value: 'rachna', tag: 'word', pos: 'NN' } ];
       expect( tag( tk( 'what rachna' ) ) ).to.deep.equal( output );
   } );
+
+  it( 'check am/is/are followed by ...ing', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'am', tag: 'word', pos: 'VBP' },
+                     { value: 'feeling', tag: 'word', pos: 'VBG' } ];
+      expect( tag( tk( 'I am feeling' ) ) ).to.deep.equal( output );
+      output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                 { value: 'have', tag: 'word', pos: 'VBP' },
+                 { value: 'a', tag: 'word', pos: 'DT' },
+                 { value: 'feeling', tag: 'word', pos: 'NN' } ];
+      expect( tag( tk( 'I have a feeling' ) ) ).to.deep.equal( output );
+  } );
 } );
 
 describe( 'wink-pos-tagger update lexicon test cycle', function () {

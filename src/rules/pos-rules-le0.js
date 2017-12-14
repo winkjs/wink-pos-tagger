@@ -100,7 +100,7 @@ module.exports = {
         },
         {
           rules: [
-                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^is$|^are$|^was$|^am$/ },
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: -1 }, matches: /^is$|^are$|^was$|^am$|^were$/ },
                     { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /..ing$/ }
           ],
           thenPosAt: 0,
