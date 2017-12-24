@@ -109,7 +109,7 @@ describe( 'wink-pos-tagger update lexicon test cycle', function () {
   it( 'update lexicon to make eat as noun & again tag', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
                      { value: 'eat', tag: 'word', pos: 'NN' } ];
-      expect( tagger.updateLexicon( { eat: [ 'NN' ] } ) ).to.deep.equal( undefined );
+      expect( tagger.updateLexicon( { EAT: [ 'NN' ] } ) ).to.deep.equal( undefined );
       expect( tagger.tag( tk( 'I eat' ) ) ).to.deep.equal( output );
   } );
 } );
