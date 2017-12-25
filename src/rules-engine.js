@@ -100,9 +100,27 @@ var applyContextRules = function ( tokens, contextRules, poses ) {
   }
 }; // applyContextRules()
 
+// ### applyAllContextRules
+/**
+ *
+ * There are currently 4 sets of context rules. They are first categorized
+ * on the basis of `property` of token they use i.e. **value** or **pos**. Each
+ * one of them is further categorized on the basis of if the **delta/range** values
+ * are **positive** or **negative**. It applies these rules in the required sequence.
+ *
+ * @param {object[]} tokens — in wink-tokenizer standards.
+ * @param {array[]} poses — each element is an array & contains valid POSes for
+ * the token at that index in `tokens`.
+ * @return {void} Nothing!
+ * @private
+*/
 var applyAllContextRules = function ( tokens, poses ) {
+  // First apply <0 rules to update POS before looking ahead.
+  // Try `value` specific rules first followed by `pos` specific. In other words
+  // specific rules followed by generic rules.
   applyContextRules( tokens, valueCRsLE0, poses );
   applyContextRules( tokens, posCRsLE0, poses );
+  // Already applied <0 rules, time to look ahead.
   applyContextRules( tokens, valueCRsGE0, poses );
   applyContextRules( tokens, posCRsGE0, poses );
 }; // applyAllContextRules()
