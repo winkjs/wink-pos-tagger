@@ -28,12 +28,40 @@ var valueCRsGE0 = require( './rules/value-rules-ge0.js' );
 var posCRsLE0 = require( './rules/pos-rules-le0.js' );
 var valueCRsLE0 = require( './rules/value-rules-le0.js' );
 
+// ### testValueAtDelta
+/**
+ *
+ * Tests the **value** of token's property defined by `rule.operand.property`
+ * using regex `rule.matches` at `rule.operand.delta` away from `cti`.
+ *
+ * @param {object[]} tokens — in wink-tokenizer standards.
+ * @param {number} cti — current token's index.
+ * @param {object} rule — containing keys `op`, `operand` and `matches` and their
+ * corresponding values.
+ * @return {boolean} `true` if match occurs otherwise `false`.
+ * @private
+*/
 var testValueAtDelta = function ( tokens, cti, rule ) {
   var tAti = tokens[ rule.operand.delta + cti ];
   if ( tAti && rule.matches.test( tAti[ rule.operand.property ] ) ) return true;
   return false;
 }; // testValueAtDelta();
 
+// ### testValueInRange
+/**
+ *
+ * Tests the **value** of token's property defined by `rule.operand.property`
+ * using regex `rule.matches` anywhere within the range specified by array
+ * `rule.operand.range`. The array is a 2-element array specifying the range,
+ * which is added to `cti` to compute the actual range.
+ *
+ * @param {object[]} tokens — in wink-tokenizer standards.
+ * @param {number} cti — current token's index.
+ * @param {object} rule — containing keys `op`, `operand` and `matches` and their
+ * corresponding values.
+ * @return {boolean} `true` if match occurs otherwise `false`.
+ * @private
+*/
 var testValueInRange = function ( tokens, cti, rule ) {
   var tAti;
   for ( var i = rule.operand.range[ 0 ]; i <= rule.operand.range[ 1 ]; i += 1 ) {
