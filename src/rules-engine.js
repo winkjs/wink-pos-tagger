@@ -89,6 +89,21 @@ var applyContextRule = function ( tokens, cti, contextRule, poses ) {
   return false;
 }; // applyContextRule()
 
+// ### applyContextRules
+/**
+ *
+ * Applies given `contextRules` on each token one-by-one. For each token, rules
+ * are tried until either a POS change has occurred or all rules have been exhausted
+ * without any change.
+ *
+ * @param {object[]} tokens — in wink-tokenizer standards.
+ * @param {object} contextRules — contains rules for different POSes. The rules to
+ * be applied is selected on the basis of POS of the current token.
+ * @param {array[]} poses — each element is an array & contains valid POSes for
+ * the token at that index in `tokens`.
+ * @return {void} Nothing!
+ * @private
+*/
 var applyContextRules = function ( tokens, contextRules, poses ) {
   var rules;
   var i, imax, j, jmax;
