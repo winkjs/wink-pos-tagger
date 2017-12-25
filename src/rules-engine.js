@@ -75,36 +75,36 @@ var operation = Object.create( null );
 operation[ K.TEST_VALUE_AT_DELTA ] = testValueAtDelta;
 operation[ K.TEST_VALUE_IN_RANGE ] = testValueInRange;
 
-var applyPosRules = function ( tokens, cti, posRule, poses ) {
-  var rules = posRule.rules;
+var applyContextRule = function ( tokens, cti, contextRule, poses ) {
+  var rules = contextRule.rules;
   var change = true;
   for ( var i = 0, imax = rules.length; ( i < imax && change ); i += 1 ) {
     change = operation[ rules[ i ].op ]( tokens, cti, rules[ i ] );
   }
   // Trigger change only if the new `pos` is a valid one — present in `poses`.
-  if ( change && poses[ cti ].indexOf( posRule.willBe ) !== -1 ) {
-    tokens[ posRule.thenPosAt + cti ].pos = posRule.willBe;
+  if ( change && poses[ cti ].indexOf( contextRule.willBe ) !== -1 ) {
+    tokens[ contextRule.thenPosAt + cti ].pos = contextRule.willBe;
     return true;
   }
   return false;
-}; // executePosRules()
+}; // applyContextRule()
 
-var applyContextRule = function ( tokens, contextRules, poses ) {
-  var posRules;
+var applyContextRules = function ( tokens, contextRules, poses ) {
+  var rules;
   var i, imax, j, jmax;
   for ( i = 0, imax = tokens.length; i < imax; i += 1 ) {
-    posRules = contextRules[ tokens[ i ].pos ];
-    if ( posRules ) {
-      for ( j = 0, jmax = posRules.length; j < jmax && !applyPosRules( tokens, i, posRules[ j ], poses ); j += 1);
+    rules = contextRules[ tokens[ i ].pos ];
+    if ( rules ) {
+      for ( j = 0, jmax = rules.length; j < jmax && !applyContextRule( tokens, i, rules[ j ], poses ); j += 1);
     }
   }
-}; // executeContextRule()
+}; // applyContextRules()
 
-var applyContextRules = function ( tokens, poses ) {
-  applyContextRule( tokens, valueCRsLE0, poses );
-  applyContextRule( tokens, posCRsLE0, poses );
-  applyContextRule( tokens, valueCRsGE0, poses );
-  applyContextRule( tokens, posCRsGE0, poses );
-};
+var applyAllContextRules = function ( tokens, poses ) {
+  applyContextRules( tokens, valueCRsLE0, poses );
+  applyContextRules( tokens, posCRsLE0, poses );
+  applyContextRules( tokens, valueCRsGE0, poses );
+  applyContextRules( tokens, posCRsGE0, poses );
+}; // applyAllContextRules()
 
-module.exports = applyContextRules;
+module.exports = applyAllContextRules;
