@@ -75,6 +75,21 @@ var operation = Object.create( null );
 operation[ K.TEST_VALUE_AT_DELTA ] = testValueAtDelta;
 operation[ K.TEST_VALUE_IN_RANGE ] = testValueInRange;
 
+// ### applyContextRule
+/**
+ *
+ * Applies the given `contextRule` on the current token. A rule applicatin may
+ * trigger change in the POS at token specified by `thenPosAt` relative distance.
+ * The change is applied only if the new POS is amongst one of the valid POSes.
+ *
+ * @param {object[]} tokens — in wink-tokenizer standards.
+ * @param {number} cti — current token's index.
+ * @param {object} contextRule — contains the specific rule.
+ * @param {array[]} poses — each element is an array & contains valid POSes for
+ * the token at that index in `tokens`.
+ * @return {boolean} `true` if pos change occurs otherwise `false`.
+ * @private
+*/
 var applyContextRule = function ( tokens, cti, contextRule, poses ) {
   var rules = contextRule.rules;
   var change = true;
