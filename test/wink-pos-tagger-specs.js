@@ -134,3 +134,25 @@ describe( 'test range rule tagging "bear" differently', function () {
       expect( tag( tk( 'I will bear the expense' ) ) ).to.deep.equal( output );
   } );
 } );
+
+describe( 'test range rule tagging "bear" differently', function () {
+  it( 'A bear just crossed the road', function () {
+      var output = [ { value: 'The', tag: 'word', pos: 'DT' },
+                     { value: 'pencil', tag: 'word', pos: 'NN' },
+                     { value: 'has', tag: 'word', pos: 'VBZ' },
+                     { value: 'a', tag: 'word', pos: 'DT' },
+                     { value: 'sharp', tag: 'word', pos: 'JJ' },
+                     { value: 'point', tag: 'word', pos: 'NN' },
+                     { value: '.', tag: 'punctuation', pos: '.' },
+                     { value: 'It', tag: 'word', pos: 'PRP' },
+                     { value: 'is', tag: 'word', pos: 'VBZ' },
+                     { value: 'not', tag: 'word', pos: 'RB' },
+                     { value: 'polite', tag: 'word', pos: 'JJ' },
+                     { value: 'to', tag: 'word', pos: 'TO' },
+                     { value: 'point', tag: 'word', pos: 'VB' },
+                     { value: 'at', tag: 'word', pos: 'IN' },
+                     { value: 'people', tag: 'word', pos: 'NNS' },
+                     { value: '.', tag: 'punctuation', pos: '.' } ];
+      expect( tag( tk( 'The pencil has a sharp point. It is not polite to point at people.' ) ) ).to.deep.equal( output );
+  } );
+} );
