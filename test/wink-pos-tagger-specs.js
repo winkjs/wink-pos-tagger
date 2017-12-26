@@ -113,3 +113,24 @@ describe( 'wink-pos-tagger update lexicon test cycle', function () {
       expect( tagger.tag( tk( 'I eat' ) ) ).to.deep.equal( output );
   } );
 } );
+
+describe( 'test range rule tagging "bear" differently', function () {
+  it( 'A bear just crossed the road', function () {
+      var output = [ { value: 'A', tag: 'word', pos: 'DT' },
+                     { value: 'bear', tag: 'word', pos: 'NN' },
+                     { value: 'just', tag: 'word', pos: 'RB' },
+                     { value: 'crossed', tag: 'word', pos: 'VBD' },
+                     { value: 'the', tag: 'word', pos: 'DT' },
+                     { value: 'road', tag: 'word', pos: 'NN' } ];
+      expect( tag( tk( 'A bear just crossed the road' ) ) ).to.deep.equal( output );
+  } );
+
+  it( 'I will bear the expenses', function () {
+      var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                     { value: 'will', tag: 'word', pos: 'MD' },
+                     { value: 'bear', tag: 'word', pos: 'VB' },
+                     { value: 'the', tag: 'word', pos: 'DT' },
+                     { value: 'expense', tag: 'word', pos: 'NN' } ];
+      expect( tag( tk( 'I will bear the expense' ) ) ).to.deep.equal( output );
+  } );
+} );
