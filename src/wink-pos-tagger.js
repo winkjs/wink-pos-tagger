@@ -25,6 +25,8 @@ var helpers = require( 'wink-helpers' );
 var winkLexicon = require( 'wink-lexicon/src/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 var applyContextRules = require( './rules-engine.js' );
+// Load tokenizer, instanciate and get tokenize method; use default config.
+var tokenize = require( 'wink-tokenizer' )().tokenize;
 
 // ### posTagger
 /**
@@ -104,8 +106,16 @@ var posTagger = function ( ) {
     return tokens;
   }; // tagTokens();
 
+  var tagSentence = function ( sentence ) {
+    if ( typeof sentence !== 'string' ) {
+      throw Error( 'wink-pos-tagger: input sentence must be a string, instead found: ' + typeof sentence );
+    }
+    return tag( tokenize( sentence ) );
+  }; // tagSentence()
+
   methods.updateLexicon = updateLexicon;
   methods.tag = tag;
+  methods.tagSentence = tagSentence;
 
   return methods;
 }; // posTagger()
