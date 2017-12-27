@@ -2,7 +2,7 @@
 
 English Part-of-speech (POS) tagger
 
-### [![Build Status](https://api.travis-ci.org/winkjs/wink-pos-tagger.svg?branch=master)](https://travis-ci.org/winkjs/wink-pos-tagger) [![Coverage Status](https://coveralls.io/repos/github/winkjs/wink-pos-tagger/badge.svg?branch=master)](https://coveralls.io/github/winkjs/wink-pos-tagger?branch=master) [![Inline docs](http://inch-ci.org/github/winkjs/wink-pos-tagger.svg?branch=master)](http://inch-ci.org/github/winkjs/wink-pos-tagger) [![devDependencies Status](https://david-dm.org/winkjs/wink-pos-tagger/dev-status.svg)](https://david-dm.org/winkjs/wink-pos-tagger?type=dev)
+### [![Build Status](https://api.travis-ci.org/winkjs/wink-pos-tagger.svg?branch=master)](https://travis-ci.org/winkjs/wink-pos-tagger) [![Coverage Status](https://coveralls.io/repos/github/winkjs/wink-pos-tagger/badge.svg?branch=master)](https://coveralls.io/github/winkjs/wink-pos-tagger?branch=master) [![Inline docs](http://inch-ci.org/github/winkjs/wink-pos-tagger.svg?branch=master)](http://inch-ci.org/github/winkjs/wink-pos-tagger) [![dependencies Status](https://david-dm.org/winkjs/wink-pos-tagger/status.svg)](https://david-dm.org/winkjs/wink-pos-tagger) [![devDependencies Status](https://david-dm.org/winkjs/wink-pos-tagger/dev-status.svg)](https://david-dm.org/winkjs/wink-pos-tagger?type=dev)
 
 [<img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >](http://winkjs.org/)
 
