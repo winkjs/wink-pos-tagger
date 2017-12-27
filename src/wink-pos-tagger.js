@@ -106,6 +106,31 @@ var posTagger = function ( ) {
     return tokens;
   }; // tagTokens();
 
+  // ### tagSentence
+  /**
+   *
+   * Tags the input `sentence` with their **pos**.
+   *
+   * @param {string} sentence — to be pos tagged.
+   * @return {object[]} pos tagged `tokens.`
+   * @throws {Error} if `sentence` is not a valid string.
+   * @example
+   * myTagger.tagSentence( 'A bear just crossed the road. I will bear all the expenses.' );
+   * // -> [ { value: 'A', tag: 'word', pos: 'DT' },
+   * //      { value: 'bear', tag: 'word', pos: 'NN' },
+   * //      { value: 'just', tag: 'word', pos: 'RB' },
+   * //      { value: 'crossed', tag: 'word', pos: 'VBD' },
+   * //      { value: 'the', tag: 'word', pos: 'DT' },
+   * //      { value: 'road', tag: 'word', pos: 'NN' },
+   * //      { value: '.', tag: 'punctuation', pos: '.' },
+   * //      { value: 'I', tag: 'word', pos: 'PRP' },
+   * //      { value: 'will', tag: 'word', pos: 'MD' },
+   * //      { value: 'bear', tag: 'word', pos: 'VB' },
+   * //      { value: 'all', tag: 'word', pos: 'PDT' },
+   * //      { value: 'the', tag: 'word', pos: 'DT' },
+   * //      { value: 'expenses', tag: 'word', pos: 'NNS' },
+   * //      { value: '.', tag: 'punctuation', pos: '.' } ]
+  */
   var tagSentence = function ( sentence ) {
     if ( typeof sentence !== 'string' ) {
       throw Error( 'wink-pos-tagger: input sentence must be a string, instead found: ' + typeof sentence );

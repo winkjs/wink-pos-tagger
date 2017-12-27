@@ -83,6 +83,16 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#tagsentence'
+                  class="">
+                  tagSentence
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -400,6 +410,106 @@ myTagger.tag( tokenize( <span class="hljs-string">'I finished the whole pizza as
 <span class="hljs-comment">//      { value: 'was', tag: 'word', pos: 'VBD' },</span>
 <span class="hljs-comment">//      { value: 'feeling', tag: 'word', pos: 'VBG' },</span>
 <span class="hljs-comment">//      { value: 'hungry', tag: 'word', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='tagsentence'>
+      tagSentence
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Tags the input <code>sentence</code> with their <strong>pos</strong>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>tagSentence(sentence: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sentence</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    — to be pos tagged.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
+        pos tagged 
+<code>tokens.</code>
+
+      
+    
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
+<code>sentence</code>
+ is not a valid string.
+</li>
+      
+    </ul>
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road. I will bear all the expenses.'</span> );
+<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'NN' },</span>
+<span class="hljs-comment">//      { value: 'just', tag: 'word', pos: 'RB' },</span>
+<span class="hljs-comment">//      { value: 'crossed', tag: 'word', pos: 'VBD' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'road', tag: 'word', pos: 'NN' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' },</span>
+<span class="hljs-comment">//      { value: 'I', tag: 'word', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'will', tag: 'word', pos: 'MD' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'VB' },</span>
+<span class="hljs-comment">//      { value: 'all', tag: 'word', pos: 'PDT' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'expenses', tag: 'word', pos: 'NNS' },</span>
 <span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
     
   
