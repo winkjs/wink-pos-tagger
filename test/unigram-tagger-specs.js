@@ -78,4 +78,12 @@ describe( 'unigramPOSTagger() test cycle', function () {
   it( 'tag an unknown JJ ending with -ful', function () {
       expect( tag( { value: 'sorrowful', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
   } );
+
+  it( 'tag an unknown JJ ending with -less', function () {
+      expect( tag( { value: 'clueless', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
+  } );
+
+  it( 'tag an unknown JJ ending with -ory', function () {
+      expect( tag( { value: 'compulsory', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
+  } );
 } );
