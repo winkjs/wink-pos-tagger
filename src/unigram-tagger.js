@@ -62,9 +62,10 @@ var unigramPOSTagger = function ( token, lexicon ) {
                 // Still struggling, time to apply morphological rules.
                 // Their sequence of application is important: match the longest
                 // one first!
-                ( unknownWordsPOS[ word.slice( -3 ) ] ||
-                  ( unknownWordsPOS[ word.slice( -2 ) ] ||
-                      unknownWordsPOS[ word.slice( -1 ) ] ) );
+                ( unknownWordsPOS[ word.slice( -4 ) ] ||
+                  ( unknownWordsPOS[ word.slice( -3 ) ] ||
+                    ( unknownWordsPOS[ word.slice( -2 ) ] ||
+                        unknownWordsPOS[ word.slice( -1 ) ] ) ) );
     if ( !token.pos && word.slice( 0, 2 ) === 'un' && lexicon[ word.slice( 2 ) ] ) {
       token.pos = 'JJ';
     } else {
