@@ -66,4 +66,16 @@ describe( 'unigramPOSTagger() test cycle', function () {
   it( 'tag an unknown adjective', function () {
       expect( tag( { value: 'ludicrous', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
   } );
+
+  it( 'tag an unknown JJR', function () {
+      expect( tag( { value: 'angier', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJR' ] );
+  } );
+
+  it( 'tag an unknown JJS', function () {
+      expect( tag( { value: 'angiest', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJS' ] );
+  } );
+
+  it( 'tag an unknown JJ ending with -ful', function () {
+      expect( tag( { value: 'sorrowful', tag: 'word' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
+  } );
 } );
