@@ -65,7 +65,7 @@ var rules = [
  * @param {string} noun — that needs to be lemmatizeNNXd.
  * @return {string} the singular of `noun`.
  * @example
- * var tokenizer = lemmatizeNNX( 'handkerchieves' );
+ * lemmatizeNNX( 'handkerchieves' );
  * // -> handkerchief
  * @private
 */
