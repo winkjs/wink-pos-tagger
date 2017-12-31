@@ -82,10 +82,8 @@ var lemmatizeVBX = function ( verb ) {
   }
   // Return the result
   return (
-    // If a base is found return that;
-    ( base ) ? base :
-    // If verb is found in lexicon, return as is otherwise fall back to stemming.
-    ( lexicon[ verb ] ) ? verb : stem( verb )
+    // If a m1by is found return that; else fallback to stemming!
+    ( m1by ) ? m1by : stem( verb )
   );
 }; // lemmatizeVBX()
 
