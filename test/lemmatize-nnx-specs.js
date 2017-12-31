@@ -37,7 +37,7 @@ var plurals = [
                 [ 'chaos', 'chaos' ]
               ];
 
-describe( 'unigramPOSTagger() test cycle', function () {
+describe( 'lemmatizeNNX test cycle', function () {
   plurals.forEach( function ( pn ) {
     it( 'lemmatize ' + pn[ 0 ] + ' must give ' + pn[ 1 ], function () {
         expect( lemmatize( pn[ 0 ] ) ).to.deep.equal( pn[ 1 ] );
