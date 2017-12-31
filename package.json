@@ -45,6 +45,7 @@
   "dependencies": {
     "wink-helpers": "^1.2.0",
     "wink-lexicon": "^1.3.0",
+    "wink-porter2-stemmer": "^1.0.8",
     "wink-tokenizer": "^2.0.1"
   }
 }
