@@ -120,18 +120,14 @@
 <pre><code>npm install wink-pos-tagger --save
 </code></pre>
 <h3>Getting Started</h3>
-<p>Look at the following two sentences while observing the use of word 'point'.</p>
-<ol>
-<li>The pencil has a sharp point.</li>
-<li>It is not polite to point at people.</li>
-</ol>
-<p>Here 'point' is homonym. It is used as a <strong>noun</strong>  in the first sentence and as a <strong>verb</strong> in the second.</p>
 <p>The code below illustrates the steps required to pos tag a sentence:</p>
 <pre class='hljs'><span class="hljs-comment">// Load wink-pos-tagger.</span>
 <span class="hljs-keyword">var</span> posTagger = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-pos-tagger'</span> );
+
 <span class="hljs-comment">// Create an instance of the pos tagger.</span>
 <span class="hljs-keyword">var</span> tagger = posTagger();
-<span class="hljs-comment">// Tag them using the tag sentence api.</span>
+
+<span class="hljs-comment">// Tag a sentence using the tag sentence api.</span>
 tagger.tagSentence( <span class="hljs-string">'The pencil has a sharp point.'</span> );
 <span class="hljs-comment">// -&gt; [ { value: 'The', tag: 'word', pos: 'DT' },</span>
 <span class="hljs-comment">//      { value: 'pencil', tag: 'word', pos: 'NN' },</span>
@@ -140,6 +136,8 @@ tagger.tagSentence( <span class="hljs-string">'The pencil has a sharp point.'</s
 <span class="hljs-comment">//      { value: 'sharp', tag: 'word', pos: 'JJ' },</span>
 <span class="hljs-comment">//      { value: 'point', tag: 'word', pos: 'NN' },</span>
 <span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span>
+
+<span class="hljs-comment">// Tag another one.</span>
 tagger.tagSentence( <span class="hljs-string">'It is not polite to point at people.'</span> );
 <span class="hljs-comment">// -&gt; [ { value: 'It', tag: 'word', pos: 'PRP' },</span>
 <span class="hljs-comment">//      { value: 'is', tag: 'word', pos: 'VBZ' },</span>
@@ -150,6 +148,7 @@ tagger.tagSentence( <span class="hljs-string">'It is not polite to point at peop
 <span class="hljs-comment">//      { value: 'at', tag: 'word', pos: 'IN' },</span>
 <span class="hljs-comment">//      { value: 'people', tag: 'word', pos: 'NNS' },</span>
 <span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+<p>Notice the use of word 'point' in the two sentences above. Here 'point' is homonym. It is used as a <strong>noun</strong>  in the first sentence and as a <strong>verb</strong> in the second.</p>
 <h3>Documentation</h3>
 <p>Check out the <a href="http://winkjs.org/wink-pos-tagger/">pos tagger API documentation</a> to learn more.</p>
 <h3>Need Help?</h3>

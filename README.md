@@ -15,20 +15,15 @@ Use [npm](https://www.npmjs.com/package/wink-pos-tagger) to install:
     npm install wink-pos-tagger --save
 
 ### Getting Started
-Look at the following two sentences while observing the use of word 'point'.
-
-1. The pencil has a sharp point.
-2. It is not polite to point at people.
-
-Here 'point' is homonym. It is used as a **noun**  in the first sentence and as a **verb** in the second.
-
 The code below illustrates the steps required to pos tag a sentence:
 ```javascript
 // Load wink-pos-tagger.
 var posTagger = require( 'wink-pos-tagger' );
+
 // Create an instance of the pos tagger.
 var tagger = posTagger();
-// Tag them using the tag sentence api.
+
+// Tag a sentence using the tag sentence api.
 tagger.tagSentence( 'The pencil has a sharp point.' );
 // -> [ { value: 'The', tag: 'word', pos: 'DT' },
 //      { value: 'pencil', tag: 'word', pos: 'NN' },
@@ -37,6 +32,8 @@ tagger.tagSentence( 'The pencil has a sharp point.' );
 //      { value: 'sharp', tag: 'word', pos: 'JJ' },
 //      { value: 'point', tag: 'word', pos: 'NN' },
 //      { value: '.', tag: 'punctuation', pos: '.' } ]
+
+// Tag another one.
 tagger.tagSentence( 'It is not polite to point at people.' );
 // -> [ { value: 'It', tag: 'word', pos: 'PRP' },
 //      { value: 'is', tag: 'word', pos: 'VBZ' },
@@ -48,6 +45,8 @@ tagger.tagSentence( 'It is not polite to point at people.' );
 //      { value: 'people', tag: 'word', pos: 'NNS' },
 //      { value: '.', tag: 'punctuation', pos: '.' } ]
 ```
+
+Notice the use of word 'point' in the two sentences above. Here 'point' is homonym. It is used as a **noun**  in the first sentence and as a **verb** in the second.
 
 ### Documentation
 Check out the [pos tagger API documentation](http://winkjs.org/wink-pos-tagger/) to learn more.
