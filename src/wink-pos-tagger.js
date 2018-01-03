@@ -45,6 +45,15 @@ var posTagger = function ( ) {
 
   // Returned!
   var methods = Object.create( null );
+  // Configuration parameters.
+  var cfgParams = [
+    'lemma',
+    'normal'
+  ];
+  // Configuration & it's default values.
+  var cfg = Object.create( null );
+  cfg.lemma = true;
+  cfg.normal = true;
 
   // ### updateLexicon
   /**
@@ -69,6 +78,49 @@ var posTagger = function ( ) {
     // Update winkLexicon but with lower-cased key.
     for ( var key in lexicon ) winkLexicon[ key.toLowerCase() ] = lexicon[ key ]; // eslint-disable-line guard-for-in
   }; // updateLexicon()
+
+  // ### defineConfig
+  /**
+   *
+   * Configures the **properties** to be added to each token
+   * apart from `pos.` The properties are **lemma** and **normal**. Note by
+   * default, all the properties are added to the token.
+   *
+   * @param {object} config — It defines 0 or more properties to be added or removed.
+   * A true value for a property ensures it's addition to each token;
+   * whereas false value means that property will not be added.
+   *
+   * *An empty config object is equivalent to setting all properties to `false.`*
+   *
+   * The table below gives the name of each property and it's description including
+   * examples.
+   * @param {boolean} [config.normal=true] normalized value is added, referenced by key **`normal`.**
+   * @param {boolean} [config.lemma=true] lemmatized value is added, referenced by key **`lemma`.**
+   * @return {object} configuration defined.
+   * @example
+   * // Do not add lemma of the "value" in the token.
+   * var myTagger.defineConfig( { lemma: false } );
+   * // -> { lemma: false, normal: true }
+   *
+   * // Do not any properties to the token.
+   * var myTagger.defineConfig( {} );
+   * // -> { lemma: false, normal: false }
+  */
+  var defineConfig = function ( config ) {
+    if ( typeof config === 'object' && Object.keys( config ).length ) {
+      cfgParams.forEach( function ( cp ) {
+        // Means `undefined` & `null` values are taken as true; otherwise
+        // standard **truthy** and **falsy** interpretation applies!!
+        cfg[ cp ] = ( config[ cp ] === undefined || config[ cp ] === null || !!config[ cp ] );
+      } );
+    } else {
+      cfgParams.forEach( function ( cp ) {
+        cfg[ cp ] = false;
+      } );
+    }
+    // Return a copy of configuration object.
+    return ( JSON.parse( JSON.stringify( cfg ) ) );
+  }; // defineConfig()
 
   // ### tag
   /**
@@ -141,6 +193,7 @@ var posTagger = function ( ) {
   methods.updateLexicon = updateLexicon;
   methods.tag = tag;
   methods.tagSentence = tagSentence;
+  methods.defineConfig = defineConfig;
 
   return methods;
 }; // posTagger()
