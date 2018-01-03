@@ -34,6 +34,7 @@ var it = mocha.it;
 
 var tag = tagger.tag;
 var tagSentence = tagger.tagSentence;
+var defineConfig = tagger.defineConfig;
 
 describe( 'wink-pos-tagger test cycle', function () {
   it( 'tag a simple sentence', function () {
@@ -210,5 +211,15 @@ describe( 'tagSentence basic test', function () {
 
   it( 'should throw error with undefined sentence', function () {
       expect( tagSentence.bind( null ) ).to.throw( 'wink-pos-tagger: input sentence must be a string, instead found: undefined' );
+  } );
+} );
+
+describe( 'defineConfig basic test', function () {
+  it( 'define lemma: false', function () {
+      expect( defineConfig( { lemma: false } ) ).to.deep.equal( { lemma: false, normal: true } );
+  } );
+
+  it( 'define all properties as false', function () {
+      expect( defineConfig( { } ) ).to.deep.equal( { lemma: false, normal: false } );
   } );
 } );
