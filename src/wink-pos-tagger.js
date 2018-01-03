@@ -25,6 +25,7 @@ var helpers = require( 'wink-helpers' );
 var winkLexicon = require( 'wink-lexicon/src/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 var applyContextRules = require( './rules-engine.js' );
+var normalize = require( './normalize-token-value.js' );
 // Load tokenizer, instanciate and get tokenize method; use default config.
 var tokenize = require( 'wink-tokenizer' )().tokenize;
 
@@ -87,7 +88,7 @@ var posTagger = function ( ) {
    * default, all the properties are added to the token.
    *
    * @param {object} config — It defines 0 or more properties to be added or removed.
-   * A true value for a property ensures it's addition to each token;
+   * A `true` or `undefined` value for a property ensures it's addition to each token;
    * whereas false value means that property will not be added.
    *
    * *An empty config object is equivalent to setting all properties to `false.`*
@@ -151,9 +152,14 @@ var posTagger = function ( ) {
   var tag = function ( tokens ) {
     // Array of "array each possible pos" for each token.
     var poses = [];
-    tokens.forEach( function ( t ) {
+    // Temp token.
+    var t;
+    for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
+      t = tokens[ i ];
+      // Normalize, if configuration demands it!
+      if ( cfg.normal ) t.normal = normalize( t.value );
       poses.push( unigramPOSTagger( t, winkLexicon ) );
-    } );
+    }
     applyContextRules( tokens, poses );
     return tokens;
   }; // tagTokens();
