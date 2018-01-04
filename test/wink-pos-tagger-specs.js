@@ -37,6 +37,9 @@ var tagSentence = tagger.tagSentence;
 var defineConfig = tagger.defineConfig;
 
 describe( 'wink-pos-tagger test cycle', function () {
+  // It turns of the lemma & normal ensuring the current test cases are not
+  // required to be updated after issue #9.
+  defineConfig( {} );
   it( 'tag a simple sentence', function () {
       var output = [ { value: 'this', tag: 'word', pos: 'DT' },
                      { value: 'is', tag: 'word', pos: 'VBZ' },
@@ -221,5 +224,15 @@ describe( 'defineConfig basic test', function () {
 
   it( 'define all properties as false', function () {
       expect( defineConfig( { } ) ).to.deep.equal( { lemma: false, normal: false } );
+  } );
+
+  it( 'test addition of normal in tokens', function () {
+    var output = [ { value: 'Nestlé', tag: 'word', pos: 'NN', normal: 'nestle' },
+               { value: 'is', tag: 'word', pos: 'VBZ', normal: 'is' },
+               { value: 'an', tag: 'word', pos: 'DT', normal: 'an' },
+               { value: 'organization', tag: 'word', pos: 'NN', normal: 'organization' } ];
+
+    expect( defineConfig( { lemma: false } ) ).to.deep.equal( { lemma: false, normal: true } );
+    expect( tagSentence( 'Nestlé is an organization' ) ).to.deep.equal( output );
   } );
 } );
