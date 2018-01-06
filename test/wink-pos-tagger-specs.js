@@ -235,4 +235,38 @@ describe( 'defineConfig basic test', function () {
     expect( defineConfig( { lemma: false } ) ).to.deep.equal( { lemma: false, normal: true } );
     expect( tagSentence( 'Nestlé is an organization' ) ).to.deep.equal( output );
   } );
+
+  it( 'test with lemma/normal turned on', function () {
+    var output = [ { value: 'He', tag: 'word', normal: 'he', pos: 'PRP' },
+                   { value: 'will', tag: 'word', normal: 'will', pos: 'MD', lemma: 'will' },
+                   { value: 'be', tag: 'word', normal: 'be', pos: 'VB', lemma: 'be' },
+                   { value: 'trying', tag: 'word', normal: 'trying', pos: 'VBG', lemma: 'try' },
+                   { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
+                   { value: 'fish', tag: 'word', normal: 'fish', pos: 'VB', lemma: 'fish' },
+                   { value: 'fish', tag: 'word', normal: 'fish', pos: 'NN', lemma: 'fish' },
+                   { value: 'in', tag: 'word', normal: 'in', pos: 'IN' },
+                   { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+                   { value: 'lake', tag: 'word', normal: 'lake', pos: 'NN', lemma: 'lake' },
+                   { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ];
+
+    expect( defineConfig( { lemma: true, normal: true } ) ).to.deep.equal( { lemma: true, normal: true } );
+    expect( tagSentence( 'He will be trying to fish fish in the lake.' ) ).to.deep.equal( output );
+  } );
+
+  it( 'test with lemma: true/normal: false turned on', function () {
+    var output = [ { value: 'He', tag: 'word', pos: 'PRP' },
+                   { value: 'will', tag: 'word', pos: 'MD', lemma: 'will' },
+                   { value: 'be', tag: 'word', pos: 'VB', lemma: 'be' },
+                   { value: 'trying', tag: 'word', pos: 'VBG', lemma: 'try' },
+                   { value: 'to', tag: 'word', pos: 'TO' },
+                   { value: 'fish', tag: 'word', pos: 'VB', lemma: 'fish' },
+                   { value: 'fish', tag: 'word', pos: 'NN', lemma: 'fish' },
+                   { value: 'in', tag: 'word', pos: 'IN' },
+                   { value: 'the', tag: 'word', pos: 'DT' },
+                   { value: 'lake', tag: 'word', pos: 'NN', lemma: 'lake' },
+                   { value: '.', tag: 'punctuation', pos: '.' } ];
+
+    expect( defineConfig( { lemma: true, normal: false } ) ).to.deep.equal( { lemma: true, normal: false } );
+    expect( tagSentence( 'He will be trying to fish fish in the lake.' ) ).to.deep.equal( output );
+  } );
 } );
