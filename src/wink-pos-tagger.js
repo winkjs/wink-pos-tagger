@@ -26,6 +26,8 @@ var winkLexicon = require( 'wink-lexicon/src/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 var applyContextRules = require( './rules-engine.js' );
 var normalize = require( './normalize-token-value.js' );
+var lemmatizeVBX = require( './lemmatize-vbx.js' );
+var lemmatizeNNX = require( './lemmatize-nnx.js' );
 // Load tokenizer, instanciate and get tokenize method; use default config.
 var tokenize = require( 'wink-tokenizer' )().tokenize;
 
@@ -161,6 +163,25 @@ var posTagger = function ( ) {
       poses.push( unigramPOSTagger( t, winkLexicon ) );
     }
     applyContextRules( tokens, poses );
+    // Lemmatize, if configuration demands...
+    if ( cfg.lemma ) {
+      for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
+        t = tokens[ i ];
+        switch ( t.pos[ 0 ] ) {
+          case 'V':
+              t.lemma = lemmatizeVBX( t.normal || normalize( t.value ) );
+            break;
+          case 'N':
+              t.lemma = lemmatizeNNX( t.normal || normalize( t.value ) );
+            break;
+          case 'M':
+              t.lemma = lemmatizeVBX( t.normal || normalize( t.value ) );
+            break;
+          default:
+
+        }
+      }
+    }
     return tokens;
   }; // tagTokens();
 
