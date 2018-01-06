@@ -23,30 +23,22 @@ var posTagger = require( 'wink-pos-tagger' );
 // Create an instance of the pos tagger.
 var tagger = posTagger();
 
-// Tag a sentence using the tag sentence api.
-tagger.tagSentence( 'The pencil has a sharp point.' );
-// -> [ { value: 'The', tag: 'word', pos: 'DT' },
-//      { value: 'pencil', tag: 'word', pos: 'NN' },
-//      { value: 'has', tag: 'word', pos: 'VBZ' },
-//      { value: 'a', tag: 'word', pos: 'DT' },
-//      { value: 'sharp', tag: 'word', pos: 'JJ' },
-//      { value: 'point', tag: 'word', pos: 'NN' },
-//      { value: '.', tag: 'punctuation', pos: '.' } ]
-
-// Tag another one.
-tagger.tagSentence( 'It is not polite to point at people.' );
-// -> [ { value: 'It', tag: 'word', pos: 'PRP' },
-//      { value: 'is', tag: 'word', pos: 'VBZ' },
-//      { value: 'not', tag: 'word', pos: 'RB' },
-//      { value: 'polite', tag: 'word', pos: 'JJ' },
-//      { value: 'to', tag: 'word', pos: 'TO' },
-//      { value: 'point', tag: 'word', pos: 'VB' },
-//      { value: 'at', tag: 'word', pos: 'IN' },
-//      { value: 'people', tag: 'word', pos: 'NNS' },
-//      { value: '.', tag: 'punctuation', pos: '.' } ]
+// Tag the sentence using the tag sentence api.
+tagger.tagSentence( 'He is trying to fish for fish in the lake.' );
+// -> [ { value: 'He', tag: 'word', normal: 'he', pos: 'PRP' },
+//      { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },
+//      { value: 'trying', tag: 'word', normal: 'trying', pos: 'VBG', lemma: 'try' },
+//      { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
+//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'VB', lemma: 'fish' },
+//      { value: 'for', tag: 'word', normal: 'for', pos: 'IN' },
+//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'NN', lemma: 'fish' },
+//      { value: 'in', tag: 'word', normal: 'in', pos: 'IN' },
+//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+//      { value: 'lake', tag: 'word', normal: 'lake', pos: 'NN', lemma: 'lake' },
+//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
 ```
 
-Notice the use of word 'point' in the two sentences above. Here 'point' is homonym. It is used as a **noun**  in the first sentence and as a **verb** in the second.
+Notice the way instances of the word "fish" have been tagged as **verb** and **noun**.
 
 ### Documentation
 Check out the [pos tagger API documentation](http://winkjs.org/wink-pos-tagger/) to learn more.
@@ -57,7 +49,7 @@ If you spot a bug and the same has not yet been reported, raise a new [issue](ht
 
 ### Copyright & License
 
-**wink-pos-tagger** is copyright 2017 [GRAYPE Systems Private Limited](http://graype.in/).
+**wink-pos-tagger** is copyright 2017-18 [GRAYPE Systems Private Limited](http://graype.in/).
 
 It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
 Software Foundation, version 3 of the License.
