@@ -442,6 +442,8 @@ examples.</p>
   </td>
   <td class='break-word'><span>lemmatized value is added, referenced by key 
 <strong><code>lemma</code>.</strong>
+
+Currently lemmatization of verbs and nouns is supported.
 </span></td>
 </tr>
 
@@ -477,7 +479,7 @@ examples.</p>
 <span class="hljs-keyword">var</span> myTagger.defineConfig( { <span class="hljs-attr">lemma</span>: <span class="hljs-literal">false</span> } );
 <span class="hljs-comment">// -&gt; { lemma: false, normal: true }</span>
 
-<span class="hljs-comment">// Do not any properties to the token.</span>
+<span class="hljs-comment">// Do not add any properties to the token.</span>
 <span class="hljs-keyword">var</span> myTagger.defineConfig( {} );
 <span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span></pre>
     
@@ -563,18 +565,18 @@ standard.
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Get `tokenizer` method from the instance of `wink-tokenizer`.</span>
 <span class="hljs-keyword">var</span> tokenize = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-tokenizer'</span> )().tokenize;
 <span class="hljs-comment">// Tag the tokenized sentence.</span>
-myTagger.tag( tokenize( <span class="hljs-string">'I finished the whole pizza as I was feeling hungry.'</span> ) );
-<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'finished', tag: 'word', pos: 'VBD' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'whole', tag: 'word', pos: 'JJ' },</span>
-<span class="hljs-comment">//      { value: 'pizza', tag: 'word', pos: 'NN' },</span>
-<span class="hljs-comment">//      { value: 'as', tag: 'word', pos: 'IN' },</span>
-<span class="hljs-comment">//      { value: 'I', tag: 'word', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'was', tag: 'word', pos: 'VBD' },</span>
-<span class="hljs-comment">//      { value: 'feeling', tag: 'word', pos: 'VBG' },</span>
-<span class="hljs-comment">//      { value: 'hungry', tag: 'word', pos: 'JJ' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I was feeling hungry.'</span> ) );
+<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },</span>
+<span class="hljs-comment">//      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },</span>
+<span class="hljs-comment">//      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },</span>
+<span class="hljs-comment">//      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },</span>
+<span class="hljs-comment">//      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
     
   
 
@@ -660,15 +662,20 @@ myTagger.tag( tokenize( <span class="hljs-string">'I finished the whole pizza as
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road. I will bear all the expenses.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'NN' },</span>
-<span class="hljs-comment">//      { value: 'just', tag: 'word', pos: 'RB' },</span>
-<span class="hljs-comment">//      { value: 'crossed', tag: 'word', pos: 'VBD' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'road', tag: 'word', pos: 'NN' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' },</span>
-<span class="hljs-comment">//      { value: 'I', tag: 'word', pos: 'PRP' },</span>
+      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road.'</span> );
+<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', normal: 'a', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'NN', lemma: 'bear' },</span>
+<span class="hljs-comment">//      { value: 'just', tag: 'word', normal: 'just', pos: 'RB' },</span>
+<span class="hljs-comment">//      { value: 'crossed', tag: 'word', normal: 'crossed', pos: 'VBD', lemma: 'cross' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Turn of addition of lemma &amp; normal; and then tag.</span>
+myTagger.defineConfig( {} );
+<span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span>
+myTagger.tagSentence( <span class="hljs-string">'I will bear all the expenses.'</span> );
+<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
 <span class="hljs-comment">//      { value: 'will', tag: 'word', pos: 'MD' },</span>
 <span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'VB' },</span>
 <span class="hljs-comment">//      { value: 'all', tag: 'word', pos: 'PDT' },</span>

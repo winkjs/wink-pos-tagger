@@ -99,13 +99,14 @@ var posTagger = function ( ) {
    * examples.
    * @param {boolean} [config.normal=true] normalized value is added, referenced by key **`normal`.**
    * @param {boolean} [config.lemma=true] lemmatized value is added, referenced by key **`lemma`.**
+   * Currently lemmatization of verbs and nouns is supported.
    * @return {object} configuration defined.
    * @example
    * // Do not add lemma of the "value" in the token.
    * var myTagger.defineConfig( { lemma: false } );
    * // -> { lemma: false, normal: true }
    *
-   * // Do not any properties to the token.
+   * // Do not add any properties to the token.
    * var myTagger.defineConfig( {} );
    * // -> { lemma: false, normal: false }
   */
@@ -138,18 +139,18 @@ var posTagger = function ( ) {
    * // Get `tokenizer` method from the instance of `wink-tokenizer`.
    * var tokenize = require( 'wink-tokenizer' )().tokenize;
    * // Tag the tokenized sentence.
-   * myTagger.tag( tokenize( 'I finished the whole pizza as I was feeling hungry.' ) );
-   * // -> [ { value: 'I', tag: 'word', pos: 'PRP' },
-   * //      { value: 'finished', tag: 'word', pos: 'VBD' },
-   * //      { value: 'the', tag: 'word', pos: 'DT' },
-   * //      { value: 'whole', tag: 'word', pos: 'JJ' },
-   * //      { value: 'pizza', tag: 'word', pos: 'NN' },
-   * //      { value: 'as', tag: 'word', pos: 'IN' },
-   * //      { value: 'I', tag: 'word', pos: 'PRP' },
-   * //      { value: 'was', tag: 'word', pos: 'VBD' },
-   * //      { value: 'feeling', tag: 'word', pos: 'VBG' },
-   * //      { value: 'hungry', tag: 'word', pos: 'JJ' },
-   * //      { value: '.', tag: 'punctuation', pos: '.' } ]
+   * myTagger.tag( tokenize( 'I ate the entire pizza as I was feeling hungry.' ) );
+   * // -> [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+   * //      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },
+   * //      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+   * //      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ' },
+   * //      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },
+   * //      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },
+   * //      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+   * //      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },
+   * //      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },
+   * //      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ' },
+   * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
   */
   var tag = function ( tokens ) {
     // Array of "array each possible pos" for each token.
@@ -194,15 +195,20 @@ var posTagger = function ( ) {
    * @return {object[]} pos tagged `tokens.`
    * @throws {Error} if `sentence` is not a valid string.
    * @example
-   * myTagger.tagSentence( 'A bear just crossed the road. I will bear all the expenses.' );
-   * // -> [ { value: 'A', tag: 'word', pos: 'DT' },
-   * //      { value: 'bear', tag: 'word', pos: 'NN' },
-   * //      { value: 'just', tag: 'word', pos: 'RB' },
-   * //      { value: 'crossed', tag: 'word', pos: 'VBD' },
-   * //      { value: 'the', tag: 'word', pos: 'DT' },
-   * //      { value: 'road', tag: 'word', pos: 'NN' },
-   * //      { value: '.', tag: 'punctuation', pos: '.' },
-   * //      { value: 'I', tag: 'word', pos: 'PRP' },
+   * myTagger.tagSentence( 'A bear just crossed the road.' );
+   * // -> [ { value: 'A', tag: 'word', normal: 'a', pos: 'DT' },
+   * //      { value: 'bear', tag: 'word', normal: 'bear', pos: 'NN', lemma: 'bear' },
+   * //      { value: 'just', tag: 'word', normal: 'just', pos: 'RB' },
+   * //      { value: 'crossed', tag: 'word', normal: 'crossed', pos: 'VBD', lemma: 'cross' },
+   * //      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+   * //      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },
+   * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
+   * //
+   * // Turn of addition of lemma & normal; and then tag.
+   * myTagger.defineConfig( {} );
+   * // -> { lemma: false, normal: false }
+   * myTagger.tagSentence( 'I will bear all the expenses.' );
+   * // -> [ { value: 'I', tag: 'word', pos: 'PRP' },
    * //      { value: 'will', tag: 'word', pos: 'MD' },
    * //      { value: 'bear', tag: 'word', pos: 'VB' },
    * //      { value: 'all', tag: 'word', pos: 'PDT' },
@@ -226,3 +232,6 @@ var posTagger = function ( ) {
 }; // posTagger()
 
 module.exports = posTagger;
+var pt = posTagger();
+pt.defineConfig( {} );
+// console.log( pt.tagSentence( 'I will bear all the expenses.' ) )
