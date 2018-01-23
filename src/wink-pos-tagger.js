@@ -26,8 +26,9 @@ var winkLexicon = require( 'wink-lexicon/src/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 var applyContextRules = require( './rules-engine.js' );
 var normalize = require( './normalize-token-value.js' );
-var lemmatizeVBX = require( './lemmatize-vbx.js' );
-var lemmatizeNNX = require( './lemmatize-nnx.js' );
+var wl = require( 'wink-lemmatizer' );
+var lemmatizeVBX = wl.lemmatizeVerb;
+var lemmatizeNNX = wl.lemmatizeNoun;
 // Load tokenizer, instanciate and get tokenize method; use default config.
 var tokenize = require( 'wink-tokenizer' )().tokenize;
 
