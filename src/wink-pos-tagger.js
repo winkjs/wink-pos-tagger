@@ -25,12 +25,13 @@ var helpers = require( 'wink-helpers' );
 var winkLexicon = require( 'wink-lexicon/src/lexicon.js' );
 var unigramPOSTagger = require( './unigram-tagger.js' );
 var applyContextRules = require( './rules-engine.js' );
-var normalize = require( './normalize-token-value.js' );
 var wl = require( 'wink-lemmatizer' );
 var lemmatizeVBX = wl.lemmatizeVerb;
 var lemmatizeNNX = wl.lemmatizeNoun;
 // Load tokenizer, instanciate and get tokenize method; use default config.
 var tokenize = require( 'wink-tokenizer' )().tokenize;
+// Extract string normalization function from `wink-helpers`.
+var normalize = helpers.string.normalize;
 
 // ### posTagger
 /**
