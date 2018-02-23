@@ -234,6 +234,3 @@ var posTagger = function ( ) {
 }; // posTagger()
 
 module.exports = posTagger;
-var pt = posTagger();
-pt.defineConfig( {} );
-// console.log( pt.tagSentence( 'I will bear all the expenses.' ) )

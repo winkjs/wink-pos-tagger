@@ -269,4 +269,31 @@ describe( 'defineConfig basic test', function () {
     expect( defineConfig( { lemma: true, normal: false } ) ).to.deep.equal( { lemma: true, normal: false } );
     expect( tagSentence( 'He will be trying to fish fish in the lake.' ) ).to.deep.equal( output );
   } );
+
+  it( 'tags a sentence containing &', function () {
+    var output = [ { value: 'He', tag: 'word', pos: 'PRP' },
+                   { value: '&', tag: 'symbol', pos: 'CC' },
+                   { value: 'his', tag: 'word', pos: 'PRP$' },
+                   { value: 'friend', tag: 'word', pos: 'NN' },
+                   { value: 'are', tag: 'word', pos: 'VBP' },
+                   { value: 'walking', tag: 'word', pos: 'VBG' } ];
+
+    expect( defineConfig( { lemma: false, normal: false } ) ).to.deep.equal( { lemma: false, normal: false } );
+    expect( tagSentence( 'He & his friend are walking' ) ).to.deep.equal( output );
+  } );
+
+  it( 'tags a sentence containing % & #', function () {
+    var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
+                   { value: 'earned', tag: 'word', pos: 'VBD' },
+                   { value: '10', tag: 'number', pos: 'CD' },
+                   { value: '%', tag: 'symbol', pos: 'NN' },
+                   { value: 'bonus', tag: 'word', pos: 'NN' },
+                   { value: 'in', tag: 'word', pos: 'IN' },
+                   { value: 'Q', tag: 'word', pos: 'NN' },
+                   { value: '#', tag: 'symbol', pos: 'NN' },
+                   { value: '3', tag: 'number', pos: 'CD' } ];
+
+    expect( defineConfig( { lemma: false, normal: false } ) ).to.deep.equal( { lemma: false, normal: false } );
+    expect( tagSentence( 'I earned 10% bonus in Q#3' ) ).to.deep.equal( output );
+  } );
 } );
