@@ -34,11 +34,11 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "docker": "^1.0.0",
-    "documentation": "^5.3.5",
-    "eslint": "^4.16.0",
+    "documentation": "^5.4.0",
+    "eslint": "^4.18.1",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.5",
-    "mocha": "^5.0.0",
+    "mocha": "^5.0.1",
     "mocha-lcov-reporter": "^1.3.0"
   },
   "runkitExampleFilename": "./runkit/example.js",
@@ -47,6 +47,6 @@
     "wink-lemmatizer": "^1.0.0",
     "wink-lexicon": "^1.5.0",
     "wink-porter2-stemmer": "^1.0.8",
-    "wink-tokenizer": "^2.1.0"
+    "wink-tokenizer": "^3.0.0"
   }
 }
