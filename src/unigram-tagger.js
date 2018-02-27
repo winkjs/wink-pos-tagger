@@ -50,7 +50,9 @@ var unigramPOSTagger = function ( token, lexicon ) {
   var poses;
   // Finish off with punctuations first.
   if ( token.tag === 'punctuation' ) {
-    token.pos = punctuationPOS[ token.value ];
+    // `|| token.value` is a catch all clause! In other words, unknown
+    // punctuation will have a pos as **it's value**.
+    token.pos = punctuationPOS[ token.value ] || token.value;
     return [ token.pos ];
   }
   // Start with tag lookup!
