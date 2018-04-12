@@ -80,8 +80,8 @@ var posTagger = function ( ) {
     if ( !helpers.validate.isObject( lexicon ) ) {
       throw Error( 'wink-pos-tagger/updateLexicon: lexicon must be an object, instead found: ' + JSON.stringify( lexicon ) );
     }
-    // Update winkLexicon but with lower-cased key.
-    for ( var key in lexicon ) winkLexicon[ key.toLowerCase() ] = lexicon[ key ]; // eslint-disable-line guard-for-in
+    // Update winkLexicon but with **normalized** key.
+    for ( var key in lexicon ) winkLexicon[ normalize( key ) ] = lexicon[ key ]; // eslint-disable-line guard-for-in
   }; // updateLexicon()
 
   // ### defineConfig
