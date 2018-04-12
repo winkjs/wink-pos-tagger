@@ -100,12 +100,12 @@ describe( 'wink-pos-tagger entity test cycle', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
                      { value: 'live', tag: 'word', pos: 'VBP' },
                      { value: 'in', tag: 'word', pos: 'IN' },
-                     { value: 'denmark', tag: 'word', pos: 'NNP', entity: 'location' } ];
+                     { value: 'denmark', tag: 'word', pos: 'NNP', entityType: 'location' } ];
       expect( tagger.tag( [
                             { value: 'I', tag: 'word' },
                             { value: 'live', tag: 'word' },
                             { value: 'in', tag: 'word' },
-                            { value: 'denmark', tag: 'word', pos: 'NNP', entity: 'location' } ]
+                            { value: 'denmark', tag: 'word', pos: 'NNP', entityType: 'location' } ]
        ) ).to.deep.equal( output );
   } );
 
@@ -113,12 +113,12 @@ describe( 'wink-pos-tagger entity test cycle', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP' },
                      { value: 'live', tag: 'word', pos: 'VBP' },
                      { value: 'in', tag: 'word', pos: 'IN' },
-                     { value: 'denmark', tag: 'word', pos: 'NN', entity: 'location' } ];
+                     { value: 'denmark', tag: 'word', pos: 'NN', entityType: 'location' } ];
       expect( tagger.tag( [
                             { value: 'I', tag: 'word' },
                             { value: 'live', tag: 'word' },
                             { value: 'in', tag: 'word' },
-                            { value: 'denmark', tag: 'word', entity: 'location' } ]
+                            { value: 'denmark', tag: 'word', entityType: 'location' } ]
        ) ).to.deep.equal( output );
   } );
 

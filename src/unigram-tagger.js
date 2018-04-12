@@ -48,7 +48,7 @@ var normalize = helpers.string.normalize;
 */
 var unigramPOSTagger = function ( token, lexicon ) {
   // If token is an **entity with pos defined**, no tagging is needed.
-  if ( token.entity && token.pos ) return [ token.pos ];
+  if ( token.entityType && token.pos ) return [ token.pos ];
   // Use `normalize()` to obtain the word and not `toLowerCase()`.
   var word = token.normal || normalize( token.value );
   // Arrray of pos for the word from lexicon.
