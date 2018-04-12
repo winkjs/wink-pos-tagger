@@ -28,6 +28,7 @@ var applyContextRules = require( './rules-engine.js' );
 var wl = require( 'wink-lemmatizer' );
 var lemmatizeVBX = wl.lemmatizeVerb;
 var lemmatizeNNX = wl.lemmatizeNoun;
+var lemmatizeJJX = wl.lemmatizeAdjective;
 // Load tokenizer, instanciate and get tokenize method; use default config.
 var tokenize = require( 'wink-tokenizer' )().tokenize;
 // Extract string normalization function from `wink-helpers`.
@@ -101,7 +102,7 @@ var posTagger = function ( ) {
    * examples.
    * @param {boolean} [config.normal=true] normalized value is added, referenced by key **`normal`.**
    * @param {boolean} [config.lemma=true] lemmatized value is added, referenced by key **`lemma`.**
-   * Currently lemmatization of verbs and nouns is supported.
+   * Lemmatization of adjectives, modals, nouns and verbs is supported.
    * @return {object} configuration defined.
    * @example
    * // Do not add lemma of the "value" in the token.
@@ -157,8 +158,8 @@ var posTagger = function ( ) {
   var tag = function ( tokens ) {
     // Array of "array each possible pos" for each token.
     var poses = [];
-    // Temp token.
-    var t;
+    // Temp token & word.
+    var t, w;
     for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
       t = tokens[ i ];
       // Normalize, if configuration demands it!
@@ -171,14 +172,21 @@ var posTagger = function ( ) {
       for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
         t = tokens[ i ];
         switch ( t.pos[ 0 ] ) {
+          case 'J':
+            w = t.normal || normalize( t.value );
+            t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
+            break;
           case 'V':
-              t.lemma = lemmatizeVBX( t.normal || normalize( t.value ) );
+            w = t.normal || normalize( t.value );
+            t.lemma = ( t.pos.length > 2 ) ? lemmatizeVBX( w ) : w;
             break;
           case 'N':
-              t.lemma = lemmatizeNNX( t.normal || normalize( t.value ) );
+            w = t.normal || normalize( t.value );
+            t.lemma = ( t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
             break;
           case 'M':
-              t.lemma = lemmatizeVBX( t.normal || normalize( t.value ) );
+            w = t.normal || normalize( t.value );
+            t.lemma = lemmatizeVBX( w );
             break;
           default:
 

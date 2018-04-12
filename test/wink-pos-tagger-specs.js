@@ -260,14 +260,16 @@ describe( 'defineConfig basic test', function () {
                    { value: 'trying', tag: 'word', pos: 'VBG', lemma: 'try' },
                    { value: 'to', tag: 'word', pos: 'TO' },
                    { value: 'fish', tag: 'word', pos: 'VB', lemma: 'fish' },
-                   { value: 'fish', tag: 'word', pos: 'NN', lemma: 'fish' },
+                   { value: 'best', tag: 'word', pos: 'JJS', lemma: 'good' },
+                   { value: 'fishes', tag: 'word', pos: 'NNS', lemma: 'fish' },
                    { value: 'in', tag: 'word', pos: 'IN' },
-                   { value: 'the', tag: 'word', pos: 'DT' },
+                   { value: 'a', tag: 'word', pos: 'DT' },
+                   { value: 'good', tag: 'word', pos: 'JJ', lemma: 'good' },
                    { value: 'lake', tag: 'word', pos: 'NN', lemma: 'lake' },
                    { value: '.', tag: 'punctuation', pos: '.' } ];
 
     expect( defineConfig( { lemma: true, normal: false } ) ).to.deep.equal( { lemma: true, normal: false } );
-    expect( tagSentence( 'He will be trying to fish fish in the lake.' ) ).to.deep.equal( output );
+    expect( tagSentence( 'He will be trying to fish best fishes in a good lake.' ) ).to.deep.equal( output );
   } );
 
   it( 'tags a sentence containing &', function () {
@@ -289,11 +291,15 @@ describe( 'defineConfig basic test', function () {
                    { value: '%', tag: 'symbol', pos: 'NN' },
                    { value: 'bonus', tag: 'word', pos: 'NN' },
                    { value: 'in', tag: 'word', pos: 'IN' },
-                   { value: 'Q', tag: 'word', pos: 'NN' },
+                   { value: 'the', tag: 'word', pos: 'DT' },
+                   { value: '1st', tag: 'ordinal', pos: 'JJ' },
+                   { value: 'quarter', tag: 'word', pos: 'NN' },
+                   { value: 'for', tag: 'word', pos: 'IN' },
+                   { value: 'being', tag: 'word', pos: 'VBG' },
                    { value: '#', tag: 'symbol', pos: 'NN' },
                    { value: '3', tag: 'number', pos: 'CD' } ];
 
     expect( defineConfig( { lemma: false, normal: false } ) ).to.deep.equal( { lemma: false, normal: false } );
-    expect( tagSentence( 'I earned 10% bonus in Q#3' ) ).to.deep.equal( output );
+    expect( tagSentence( 'I earned 10% bonus in the 1st quarter for being #3' ) ).to.deep.equal( output );
   } );
 } );
