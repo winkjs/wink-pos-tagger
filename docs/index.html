@@ -65,9 +65,9 @@
               
                 
                 <li><a
-                  href='#updatelexicon'
+                  href='#defineconfig'
                   class="">
-                  updateLexicon
+                  defineConfig
                   
                 </a>
                 
@@ -75,9 +75,9 @@
               
                 
                 <li><a
-                  href='#defineconfig'
+                  href='#tagsentence'
                   class="">
-                  defineConfig
+                  tagSentence
                   
                 </a>
                 
@@ -95,9 +95,9 @@
               
                 
                 <li><a
-                  href='#tagsentence'
+                  href='#updatelexicon'
                   class="">
-                  tagSentence
+                  updateLexicon
                   
                 </a>
                 
@@ -270,102 +270,6 @@ and for updating lexicon —
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='updatelexicon'>
-      updateLexicon
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Updates the internal lexicon using the input <code>lexicon</code>. If a word/pos pair
-is found in the internal lexicon then it's value is updated with the new pos;
-otherwise it added.</p>
-
-
-  <div class='pre p1 fill-light mt0'>updateLexicon(lexicon: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>lexicon</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    — containing 
-<strong><code>word/pos</code></strong>
- pairs to be added to or
-replaced in the existing lexicon. The 
-<code>pos</code>
- should be an array containing
-pos tags, with the first one as the most frequently used POS. The 
-<code>word</code>
- is
-lower-cased before updating the internal lexicon.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
-        Nothing!
-
-      
-    
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
-    <ul>
-      
-        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
-<code>lexicon</code>
- is not a valid JS object.
-</li>
-      
-    </ul>
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'>myTagger.updateLexicon( { <span class="hljs-attr">Obama</span>: [ <span class="hljs-string">'NNP'</span> ] } );</pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='defineconfig'>
       defineConfig
     </h3>
@@ -500,6 +404,111 @@ Lemmatization of adjectives, modals, nouns and verbs is supported.
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='tagsentence'>
+      tagSentence
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Tags the input <code>sentence</code> with their <strong>pos</strong>.</p>
+
+
+  <div class='pre p1 fill-light mt0'>tagSentence(sentence: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sentence</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    — to be pos tagged.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
+        pos tagged 
+<code>tokens.</code>
+
+      
+    
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Throws</div>
+    <ul>
+      
+        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
+<code>sentence</code>
+ is not a valid string.
+</li>
+      
+    </ul>
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road.'</span> );
+<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', normal: 'a', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'NN', lemma: 'bear' },</span>
+<span class="hljs-comment">//      { value: 'just', tag: 'word', normal: 'just', pos: 'RB' },</span>
+<span class="hljs-comment">//      { value: 'crossed', tag: 'word', normal: 'crossed', pos: 'VBD', lemma: 'cross' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Turn of addition of lemma &amp; normal; and then tag.</span>
+myTagger.defineConfig( {} );
+<span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span>
+myTagger.tagSentence( <span class="hljs-string">'I will bear all the expenses.'</span> );
+<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'will', tag: 'word', pos: 'MD' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'VB' },</span>
+<span class="hljs-comment">//      { value: 'all', tag: 'word', pos: 'PDT' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'expenses', tag: 'word', pos: 'NNS' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='tag'>
       tag
     </h3>
@@ -595,18 +604,20 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='tagsentence'>
-      tagSentence
+    <h3 class='fl m0' id='updatelexicon'>
+      updateLexicon
     </h3>
     
     
   </div>
   
 
-  <p>Tags the input <code>sentence</code> with their <strong>pos</strong>.</p>
+  <p>Updates the internal lexicon using the input <code>lexicon</code>. If a word/pos pair
+is found in the internal lexicon then it's value is updated with the new pos;
+otherwise it added.</p>
 
 
-  <div class='pre p1 fill-light mt0'>tagSentence(sentence: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
+  <div class='pre p1 fill-light mt0'>updateLexicon(lexicon: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
   
   
 
@@ -623,8 +634,17 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>sentence</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    — to be pos tagged.
+            <span class='code bold'>lexicon</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    — containing 
+<strong><code>word/pos</code></strong>
+ pairs to be added to or
+replaced in the existing lexicon. The 
+<code>pos</code>
+ should be an array containing
+pos tags, with the first one as the most frequently used POS. The 
+<code>word</code>
+ is
+normalized before updating the internal lexicon.
 
           </div>
           
@@ -638,9 +658,8 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
-        pos tagged 
-<code>tokens.</code>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+        Nothing!
 
       
     
@@ -651,8 +670,8 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
     <ul>
       
         <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
-<code>sentence</code>
- is not a valid string.
+<code>lexicon</code>
+ is not a valid JS object.
 </li>
       
     </ul>
@@ -662,26 +681,7 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', normal: 'a', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'NN', lemma: 'bear' },</span>
-<span class="hljs-comment">//      { value: 'just', tag: 'word', normal: 'just', pos: 'RB' },</span>
-<span class="hljs-comment">//      { value: 'crossed', tag: 'word', normal: 'crossed', pos: 'VBD', lemma: 'cross' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// Turn of addition of lemma &amp; normal; and then tag.</span>
-myTagger.defineConfig( {} );
-<span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span>
-myTagger.tagSentence( <span class="hljs-string">'I will bear all the expenses.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'will', tag: 'word', pos: 'MD' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'VB' },</span>
-<span class="hljs-comment">//      { value: 'all', tag: 'word', pos: 'PDT' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'expenses', tag: 'word', pos: 'NNS' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+      <pre class='p1 overflow-auto round fill-light'>myTagger.updateLexicon( { <span class="hljs-attr">Obama</span>: [ <span class="hljs-string">'NNP'</span> ] } );</pre>
     
   
 

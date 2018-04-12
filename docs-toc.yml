@@ -4,3 +4,7 @@ toc:
   - name: Creating an Instance
   - posTagger
   - name: API Methods
+  - defineConfig
+  - tagSentence
+  - tag
+  - updateLexicon

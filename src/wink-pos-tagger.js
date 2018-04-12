@@ -71,7 +71,7 @@ var posTagger = function ( ) {
    * @param {object} lexicon — containing **`word/pos`** pairs to be added to or
    * replaced in the existing lexicon. The `pos` should be an array containing
    * pos tags, with the first one as the most frequently used POS. The `word` is
-   * lower-cased before updating the internal lexicon.
+   * normalized before updating the internal lexicon.
    * @return {undefined} Nothing!
    * @throws {Error} if `lexicon` is not a valid JS object.
    * @example
