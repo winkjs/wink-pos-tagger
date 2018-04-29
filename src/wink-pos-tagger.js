@@ -103,16 +103,28 @@ var posTagger = function ( ) {
     return ( JSON.parse( JSON.stringify( { lemma: true, normal: true } ) ) );
   }; // defineConfig()
 
+  // ### lemmatize
+  /**
+   *
+   * This API has no effect. It has been maintained for compatibility purpose.
+   * The `wink-tokenizer` will now always add **lemma** and **normal** forms.
+   *
+   * @param {object[]} tokens — to be lemmatized.
+   * @return {object[]} lemmatized tokens.
+   * @private
+  */
   var lemmatize = function ( tokens ) {
     var t, w;
     var lemma;
     for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
       t = tokens[ i ];
       w = t.normal;
+      // First handle exceptions arising out of contractions.
       lemma = lemmaExceptions[ w ];
       if ( lemma ) {
         t.lemma = lemma;
       } else {
+        // Otherwise use lemmatizer.
         switch ( t.pos[ 0 ] ) {
           case 'J':
             t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
@@ -121,6 +133,7 @@ var posTagger = function ( ) {
             t.lemma = ( t.pos.length > 2 ) ? lemmatizeVBX( w ) : w;
             break;
           case 'N':
+            // No lemmatization of NNPs please!
             if ( t.pos !== 'NNP' ) t.lemma = ( t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
             break;
           case 'M':
@@ -152,13 +165,13 @@ var posTagger = function ( ) {
    * // -> [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
    * //      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },
    * //      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
-   * //      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ' },
+   * //      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ', lemma: 'entire' },
    * //      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },
    * //      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },
    * //      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
    * //      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },
    * //      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },
-   * //      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ' },
+   * //      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ', lemma: 'hungry' },
    * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
   */
   var tag = function ( tokens ) {
@@ -196,17 +209,15 @@ var posTagger = function ( ) {
    * //      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },
    * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
    * //
-   * // Turn of addition of lemma & normal; and then tag.
-   * myTagger.defineConfig( {} );
-   * // -> { lemma: false, normal: false }
+   * //
    * myTagger.tagSentence( 'I will bear all the expenses.' );
-   * // -> [ { value: 'I', tag: 'word', pos: 'PRP' },
-   * //      { value: 'will', tag: 'word', pos: 'MD' },
-   * //      { value: 'bear', tag: 'word', pos: 'VB' },
-   * //      { value: 'all', tag: 'word', pos: 'PDT' },
-   * //      { value: 'the', tag: 'word', pos: 'DT' },
-   * //      { value: 'expenses', tag: 'word', pos: 'NNS' },
-   * //      { value: '.', tag: 'punctuation', pos: '.' } ]
+   * // -> [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+   * //      { value: 'will', tag: 'word', normal: 'will', pos: 'MD', lemma: 'will' },
+   * //      { value: 'bear', tag: 'word', normal: 'bear', pos: 'VB', lemma: 'bear' },
+   * //      { value: 'all', tag: 'word', normal: 'all', pos: 'PDT' },
+   * //      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+   * //      { value: 'expenses', tag: 'word', normal: 'expenses', pos: 'NNS', lemma: 'expense' },
+   * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
   */
   var tagSentence = function ( sentence ) {
     if ( typeof sentence !== 'string' ) {

@@ -81,7 +81,7 @@ describe( 'wink-pos-tagger', function () {
                      { value: 'have', tag: 'word', normal: 'have', pos: 'VB', lemma: 'have' },
                      { value: 'tea', tag: 'word', normal: 'tea', pos: 'NN', lemma: 'tea' },
                      { value: 'everyday', tag: 'word', normal: 'everyday', pos: 'JJ',lemma: 'everyday' } ];
-
+      // This will test that we are using normal and not value.
       expect( tag( tk( 'I Like to have tea everyday' ) ) ).to.deep.equal( output );
   } );
 
@@ -238,7 +238,7 @@ describe( 'wink-pos-tagger/complex sentences', function () {
     expect( tagSentence( 'He will be trying to fish fish in the lake.' ) ).to.deep.equal( output );
   } );
 
-  it( 'should tag ..fish best fishes in...', function () {
+  it( 'should tag ...fish best fishes in...', function () {
     var output = [ { value: 'He', tag: 'word', pos: 'PRP', normal: 'he' },
                    { value: 'will', tag: 'word', pos: 'MD', lemma: 'will', normal: 'will' },
                    { value: 'be', tag: 'word', pos: 'VB', lemma: 'be', normal: 'be' },

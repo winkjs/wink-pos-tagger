@@ -412,17 +412,15 @@ The <code>wink-tokenizer</code> will now always add <strong>lemma</strong> and <
 <span class="hljs-comment">//      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },</span>
 <span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span>
 <span class="hljs-comment">//</span>
-<span class="hljs-comment">// Turn of addition of lemma &amp; normal; and then tag.</span>
-myTagger.defineConfig( {} );
-<span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span>
+<span class="hljs-comment">//</span>
 myTagger.tagSentence( <span class="hljs-string">'I will bear all the expenses.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'will', tag: 'word', pos: 'MD' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', pos: 'VB' },</span>
-<span class="hljs-comment">//      { value: 'all', tag: 'word', pos: 'PDT' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'expenses', tag: 'word', pos: 'NNS' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', pos: '.' } ]</span></pre>
+<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
+<span class="hljs-comment">//      { value: 'will', tag: 'word', normal: 'will', pos: 'MD', lemma: 'will' },</span>
+<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'VB', lemma: 'bear' },</span>
+<span class="hljs-comment">//      { value: 'all', tag: 'word', normal: 'all', pos: 'PDT' },</span>
+<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
+<span class="hljs-comment">//      { value: 'expenses', tag: 'word', normal: 'expenses', pos: 'NNS', lemma: 'expense' },</span>
+<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
     
   
 
@@ -510,13 +508,13 @@ myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I w
 <span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
 <span class="hljs-comment">//      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },</span>
 <span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ', lemma: 'entire' },</span>
 <span class="hljs-comment">//      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },</span>
 <span class="hljs-comment">//      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },</span>
 <span class="hljs-comment">//      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
 <span class="hljs-comment">//      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },</span>
 <span class="hljs-comment">//      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },</span>
-<span class="hljs-comment">//      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ' },</span>
+<span class="hljs-comment">//      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ', lemma: 'hungry' },</span>
 <span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
     
   
