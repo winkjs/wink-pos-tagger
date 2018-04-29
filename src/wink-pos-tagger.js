@@ -34,6 +34,17 @@ var tokenize = require( 'wink-tokenizer' )().tokenize;
 // Extract string normalization function from `wink-helpers`.
 var normalize = helpers.string.normalize;
 
+var lemmaExceptions = Object.create( null );
+lemmaExceptions.ai = 'be';
+lemmaExceptions.ca = 'can';
+lemmaExceptions.sha = 'shall';
+lemmaExceptions[ '\'ll' ] = lemmaExceptions.wo = 'will';
+lemmaExceptions[ '\'ve' ] = 'have';
+lemmaExceptions[ '\'m' ] = 'am';
+lemmaExceptions[ '\'re' ] = 'be';
+lemmaExceptions[ 'n\'t' ] = 'not';
+lemmaExceptions[ '\'d' ] = 'would';
+
 // ### posTagger
 /**
  *
@@ -51,15 +62,6 @@ var posTagger = function ( ) {
 
   // Returned!
   var methods = Object.create( null );
-  // Configuration parameters.
-  var cfgParams = [
-    'lemma',
-    'normal'
-  ];
-  // Configuration & it's default values.
-  var cfg = Object.create( null );
-  cfg.lemma = true;
-  cfg.normal = true;
 
   // ### updateLexicon
   /**
@@ -88,46 +90,50 @@ var posTagger = function ( ) {
   // ### defineConfig
   /**
    *
-   * Configures the **properties** to be added to each token
-   * apart from `pos.` The properties are **lemma** and **normal**. Note by
-   * default, all the properties are added to the token.
-   *
-   * @param {object} config — It defines 0 or more properties to be added or removed.
-   * A `true` or `undefined` value for a property ensures it's addition to each token;
-   * whereas false value means that property will not be added.
-   *
-   * *An empty config object is equivalent to setting all properties to `false.`*
-   *
-   * The table below gives the name of each property and it's description including
-   * examples.
-   * @param {boolean} [config.normal=true] normalized value is added, referenced by key **`normal`.**
-   * @param {boolean} [config.lemma=true] lemmatized value is added, referenced by key **`lemma`.**
-   * Lemmatization of adjectives, modals, nouns and verbs is supported.
-   * @return {object} configuration defined.
+   * This API has no effect. It has been maintained for compatibility purpose.
+   * The `wink-tokenizer` will now always add **lemma** and **normal** forms.
+   * @return {object} always as `{ lemma: true, normal: true }`.
    * @example
-   * // Do not add lemma of the "value" in the token.
+   * // There will not be any effect:
    * var myTagger.defineConfig( { lemma: false } );
-   * // -> { lemma: false, normal: true }
-   *
-   * // Do not add any properties to the token.
-   * var myTagger.defineConfig( {} );
-   * // -> { lemma: false, normal: false }
+   * // -> { lemma: true, normal: true }
   */
-  var defineConfig = function ( config ) {
-    if ( typeof config === 'object' && Object.keys( config ).length ) {
-      cfgParams.forEach( function ( cp ) {
-        // Means `undefined` & `null` values are taken as true; otherwise
-        // standard **truthy** and **falsy** interpretation applies!!
-        cfg[ cp ] = ( config[ cp ] === undefined || config[ cp ] === null || !!config[ cp ] );
-      } );
-    } else {
-      cfgParams.forEach( function ( cp ) {
-        cfg[ cp ] = false;
-      } );
-    }
+  var defineConfig = function ( ) {
     // Return a copy of configuration object.
-    return ( JSON.parse( JSON.stringify( cfg ) ) );
+    return ( JSON.parse( JSON.stringify( { lemma: true, normal: true } ) ) );
   }; // defineConfig()
+
+  var lemmatize = function ( tokens ) {
+    var t, w;
+    var lemma;
+    for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
+      t = tokens[ i ];
+      w = t.normal;
+      lemma = lemmaExceptions[ w ];
+      if ( lemma ) {
+        t.lemma = lemma;
+      } else {
+        switch ( t.pos[ 0 ] ) {
+          case 'J':
+            t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
+            break;
+          case 'V':
+            t.lemma = ( t.pos.length > 2 ) ? lemmatizeVBX( w ) : w;
+            break;
+          case 'N':
+            if ( t.pos !== 'NNP' ) t.lemma = ( t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
+            break;
+          case 'M':
+            t.lemma = lemmatizeVBX( w );
+            break;
+          default:
+            // Do nothing!
+        } // swtich
+      } // if
+    }
+
+    return tokens;
+  }; // lemmatize()
 
   // ### tag
   /**
@@ -159,40 +165,16 @@ var posTagger = function ( ) {
     // Array of "array each possible pos" for each token.
     var poses = [];
     // Temp token & word.
-    var t, w;
+    var t;
     for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
       t = tokens[ i ];
       // Normalize, if configuration demands it!
-      if ( cfg.normal ) t.normal = normalize( t.value );
+      t.normal = normalize( t.value );
       poses.push( unigramPOSTagger( t, winkLexicon ) );
     }
     applyContextRules( tokens, poses );
     // Lemmatize, if configuration demands...
-    if ( cfg.lemma ) {
-      for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
-        t = tokens[ i ];
-        switch ( t.pos[ 0 ] ) {
-          case 'J':
-            w = t.normal || normalize( t.value );
-            t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
-            break;
-          case 'V':
-            w = t.normal || normalize( t.value );
-            t.lemma = ( t.pos.length > 2 ) ? lemmatizeVBX( w ) : w;
-            break;
-          case 'N':
-            w = t.normal || normalize( t.value );
-            t.lemma = ( t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
-            break;
-          case 'M':
-            w = t.normal || normalize( t.value );
-            t.lemma = lemmatizeVBX( w );
-            break;
-          default:
-
-        }
-      }
-    }
+    lemmatize( tokens );
     return tokens;
   }; // tagTokens();
 

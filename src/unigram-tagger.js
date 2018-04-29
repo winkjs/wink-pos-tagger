@@ -30,10 +30,6 @@ var tagPOS = require( 'wink-lexicon/src/tags.js' );
 // POS for punctuations.
 var punctuationPOS = require( 'wink-lexicon/src/punctuations.js' );
 
-// Helpers!
-var helpers = require( 'wink-helpers' );
-var normalize = helpers.string.normalize;
-
 // ### unigramPOSTagger
 /**
  *
@@ -50,7 +46,7 @@ var unigramPOSTagger = function ( token, lexicon ) {
   // If token is an **entity with pos defined**, no tagging is needed.
   if ( token.entityType && token.pos ) return [ token.pos ];
   // Use `normalize()` to obtain the word and not `toLowerCase()`.
-  var word = token.normal || normalize( token.value );
+  var word = token.normal;
   // Arrray of pos for the word from lexicon.
   var poses;
   // Finish off with punctuations first.

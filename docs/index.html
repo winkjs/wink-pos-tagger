@@ -278,87 +278,21 @@ and for updating lexicon —
   </div>
   
 
-  <p>Configures the <strong>properties</strong> to be added to each token
-apart from <code>pos.</code> The properties are <strong>lemma</strong> and <strong>normal</strong>. Note by
-default, all the properties are added to the token.</p>
+  <p>This API has no effect. It has been maintained for compatibility purpose.
+The <code>wink-tokenizer</code> will now always add <strong>lemma</strong> and <strong>normal</strong> forms.</p>
 
 
-  <div class='pre p1 fill-light mt0'>defineConfig(config: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
-  
-  
-
-  
-  
-  
-  
+  <div class='pre p1 fill-light mt0'>defineConfig(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>config</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    — It defines 0 or more properties to be added or removed.
-A 
-<code>true</code>
- or 
-<code>undefined</code>
- value for a property ensures it's addition to each token;
-whereas false value means that property will not be added.
-<p><em>An empty config object is equivalent to setting all properties to <code>false.</code></em></p>
-<p>The table below gives the name of each property and it's description including
-examples.</p>
-
-          </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>config.normal</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
   
-    (default <code>true</code>)
-  </td>
-  <td class='break-word'><span>normalized value is added, referenced by key 
-<strong><code>normal</code>.</strong>
-</span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>config.lemma</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
   
-    (default <code>true</code>)
-  </td>
-  <td class='break-word'><span>lemmatized value is added, referenced by key 
-<strong><code>lemma</code>.</strong>
+  
+  
+  
 
-Lemmatization of adjectives, modals, nouns and verbs is supported.
-</span></td>
-</tr>
-
-
-              
-            </tbody>
-          </table>
-          
-        </div>
-      
-    </div>
   
 
   
@@ -367,7 +301,9 @@ Lemmatization of adjectives, modals, nouns and verbs is supported.
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
-        configuration defined.
+        always as 
+<code>{ lemma: true, normal: true }</code>
+.
 
       
     
@@ -379,13 +315,9 @@ Lemmatization of adjectives, modals, nouns and verbs is supported.
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Do not add lemma of the "value" in the token.</span>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// There will not be any effect:</span>
 <span class="hljs-keyword">var</span> myTagger.defineConfig( { <span class="hljs-attr">lemma</span>: <span class="hljs-literal">false</span> } );
-<span class="hljs-comment">// -&gt; { lemma: false, normal: true }</span>
-
-<span class="hljs-comment">// Do not add any properties to the token.</span>
-<span class="hljs-keyword">var</span> myTagger.defineConfig( {} );
-<span class="hljs-comment">// -&gt; { lemma: false, normal: false }</span></pre>
+<span class="hljs-comment">// -&gt; { lemma: true, normal: true }</span></pre>
     
   
 

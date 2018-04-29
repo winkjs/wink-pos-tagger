@@ -137,7 +137,15 @@ module.exports = {
           ],
           thenPosAt: 0,
           willBe: 'RB'
-        }
+        },
+        {
+          rules: [
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'value', delta: 0 }, matches: /^like$/ },
+                    { op: K.TEST_VALUE_AT_DELTA, operand: { property: 'pos', delta: 1 }, matches: /^TO$/ }
+          ],
+          thenPosAt: 0,
+          willBe: 'VBP'
+        },
   ], // IN
   VBP: [
          {
