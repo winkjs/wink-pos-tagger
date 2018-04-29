@@ -76,13 +76,13 @@ describe( 'wink-pos-tagger', function () {
 
   it( 'should tag ...like to... triggering delta rule', function () {
       var output = [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
-                     { value: 'like', tag: 'word', normal: 'like', pos: 'VBP', lemma: 'like' },
+                     { value: 'Like', tag: 'word', normal: 'like', pos: 'VBP', lemma: 'like' },
                      { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
                      { value: 'have', tag: 'word', normal: 'have', pos: 'VB', lemma: 'have' },
                      { value: 'tea', tag: 'word', normal: 'tea', pos: 'NN', lemma: 'tea' },
                      { value: 'everyday', tag: 'word', normal: 'everyday', pos: 'JJ',lemma: 'everyday' } ];
 
-      expect( tag( tk( 'I like to have tea everyday' ) ) ).to.deep.equal( output );
+      expect( tag( tk( 'I Like to have tea everyday' ) ) ).to.deep.equal( output );
   } );
 
   it( 'should use WDT rule: seems so Indian English!', function () {
