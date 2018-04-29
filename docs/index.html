@@ -279,7 +279,9 @@ and for updating lexicon —
   
 
   <p>This API has no effect. It has been maintained for compatibility purpose.
-The <code>wink-tokenizer</code> will now always add <strong>lemma</strong> and <strong>normal</strong> forms.</p>
+The <code>wink-tokenizer</code> will now always add <strong>lemma</strong> and <strong>normal</strong> forms.
+Note, lemmas are added only for <strong>nouns</strong> (excluding proper noun), <strong>verbs</strong> and
+<strong>adjectives</strong>.</p>
 
 
   <div class='pre p1 fill-light mt0'>defineConfig(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>

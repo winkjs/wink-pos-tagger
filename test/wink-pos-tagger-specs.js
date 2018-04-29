@@ -330,4 +330,40 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
 
     expect( tagSentence( 'I\'ve got a gem' ) ).to.deep.equal( output );
   } );
+
+  it( 'should tag a sentence containing \'s as verb', function () {
+    var output = [ { value: 'Then', tag: 'word', normal: 'then', pos: 'RB' },
+                   { value: '\'s', tag: 'word', normal: '\'s', pos: 'VBZ', lemma: 'be' },
+                   { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+                   { value: 'time', tag: 'word', normal: 'time', pos: 'NN', lemma: 'time' },
+                   { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
+                   { value: 'time', tag: 'word', normal: 'time', pos: 'VB', lemma: 'time' },
+                   { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+                   { value: 'time', tag: 'word', normal: 'time', pos: 'NN', lemma: 'time' },
+                   { value: 'flies', tag: 'word', normal: 'flies', pos: 'VBZ', lemma: 'fly' } ];
+
+    expect( tagSentence( 'Then\'s the time to time the time flies' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tag a sentence containing \'s as POS', function () {
+    var output = [ { value: 'This', tag: 'word', normal: 'this', pos: 'DT' },
+                   { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },
+                   { value: 'John', tag: 'word', normal: 'john', pos: 'NN', lemma: 'john' },
+                   { value: '\'s', tag: 'word', normal: '\'s', pos: 'POS' },
+                   { value: 'food', tag: 'word', normal: 'food', pos: 'NN', lemma: 'food' },
+                   { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ];
+
+    expect( tagSentence( 'This is John\'s food.' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tag a sentence containing won\'t', function () {
+    var output = [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+                   { value: 'wo', tag: 'word', normal: 'wo', pos: 'MD', lemma: 'will' },
+                   { value: 'n\'t', tag: 'word', normal: 'n\'t', pos: 'RB', lemma: 'not' },
+                   { value: 'believe', tag: 'word', normal: 'believe', pos: 'VB', lemma: 'believe' },
+                   { value: 'you', tag: 'word', normal: 'you', pos: 'PRP' },
+                   { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ];
+
+    expect( tagSentence( 'I won\'t believe you.' ) ).to.deep.equal( output );
+  } );
 } );

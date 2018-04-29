@@ -92,6 +92,9 @@ var posTagger = function ( ) {
    *
    * This API has no effect. It has been maintained for compatibility purpose.
    * The `wink-tokenizer` will now always add **lemma** and **normal** forms.
+   * Note, lemmas are added only for **nouns** (excluding proper noun), **verbs** and
+   * **adjectives**.
+   *
    * @return {object} always as `{ lemma: true, normal: true }`.
    * @example
    * // There will not be any effect:
@@ -130,7 +133,9 @@ var posTagger = function ( ) {
             t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
             break;
           case 'V':
-            t.lemma = ( t.pos.length > 2 ) ? lemmatizeVBX( w ) : w;
+            t.lemma = ( t.pos.length > 2 ) ?
+                        ( ( t.normal === '\'s') ? 'be' : lemmatizeVBX( w ) ) :
+                        w;
             break;
           case 'N':
             // No lemmatization of NNPs please!
