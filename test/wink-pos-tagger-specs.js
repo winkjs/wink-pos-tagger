@@ -86,9 +86,9 @@ describe( 'wink-pos-tagger', function () {
   } );
 
   it( 'should use WDT rule: seems so Indian English!', function () {
-      var output = [ { value: 'what', tag: 'word', pos: 'WDT', normal: 'what' },
-                     { value: 'rachna', tag: 'word', pos: 'NN', normal: 'rachna', lemma: 'rachna' } ];
-      expect( tag( tk( 'what rachna' ) ) ).to.deep.equal( output );
+      var output = [ { value: 'what', tag: 'word', pos: 'WP', normal: 'what' },
+                     { value: 'o\'hara', tag: 'word', pos: 'NNP', normal: 'o\'hara' } ];
+      expect( tag( tk( 'what o\'hara' ) ) ).to.deep.equal( output );
   } );
 
   it( 'should work with am/is/are followed by ...ing', function () {
@@ -365,5 +365,17 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
                    { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ];
 
     expect( tagSentence( 'I won\'t believe you.' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tag a sentence containing won\'t, unk verb and proper noun', function () {
+    var output = [ { value: 'Chris', tag: 'word', normal: 'chris', pos: 'NNP' },
+                   { value: 'wo', tag: 'word', normal: 'wo', pos: 'MD', lemma: 'will' },
+                   { value: 'n\'t', tag: 'word', normal: 'n\'t', pos: 'RB', lemma: 'not' },
+                   { value: 'forgo', tag: 'word', normal: 'forgo', pos: 'VB', lemma: 'forgo' },
+                   { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+                   { value: 'tea', tag: 'word', normal: 'tea', pos: 'NN', lemma: 'tea' },
+                   { value: '!', tag: 'punctuation', normal: '!', pos: '.' } ];
+
+    expect( tagSentence( 'Chris won\'t forgo the tea!' ) ).to.deep.equal( output );
   } );
 } );

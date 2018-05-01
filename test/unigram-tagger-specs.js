@@ -86,7 +86,7 @@ describe( 'unigramPOSTagger() test cycle', function () {
   } );
 
   it( 'tag an unknown plural noun', function () {
-    expect( tag( { value: 'chairpersons', tag: 'word', normal: 'chairpersons' }, lexicon ) ).to.deep.equal( [ 'NNS' ] );
+    expect( tag( { value: 'chairpersons', tag: 'word', normal: 'chairpersons' }, lexicon ) ).to.deep.equal( [ 'NNS', 'VBZ' ] );
   } );
 
   it( 'tag an unknown adjective', function () {
@@ -111,5 +111,13 @@ describe( 'unigramPOSTagger() test cycle', function () {
 
   it( 'tag an unknown JJ ending with -ory', function () {
     expect( tag( { value: 'compulsory', tag: 'word', normal: 'compulsory' }, lexicon ) ).to.deep.equal( [ 'JJ' ] );
+  } );
+
+  it( 'tag an potential proper noun', function () {
+    expect( tag( { value: 'Aleksandrs', tag: 'word', normal: 'aleksandrs' }, lexicon ) ).to.deep.equal( [ 'NNP' ] );
+  } );
+
+  it( 'tag an potential unknown past tense verb', function () {
+    expect( tag( { value: 'abbreviated', tag: 'word', normal: 'abbreviated' }, lexicon ) ).to.deep.equal( [ 'VBD', 'VBN' ] );
   } );
 } );
