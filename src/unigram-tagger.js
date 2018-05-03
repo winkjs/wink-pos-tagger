@@ -30,6 +30,7 @@ var words = require( 'wink-lexicon/src/wn-words.js' );
 var adjExceptions = require( 'wink-lexicon/src/wn-adjective-exceptions.js' );
 var nounExceptions = require( 'wink-lexicon/src/wn-noun-exceptions.js' );
 var verbExceptions = require( 'wink-lexicon/src/wn-verb-exceptions.js' );
+var senseMap = require( 'wink-lexicon/src/wn-word-senses.js' );
 
 // POS for punctuations.
 var punctuationPOS = require( 'wink-lexicon/src/punctuations.js' );
@@ -95,17 +96,22 @@ var isPotentialWord = function ( word ) {
 */
 var unigramL2POSTagger = function ( token, lexicon ) {
   var word = token.normal;
+  var index = words[ word ];
   var pos;
-  if ( words[ word ] || adjExceptions[ word ] || nounExceptions[ word] || verbExceptions[ word ] || isPotentialWord( word ) ) {
-    // Word exists, can apply morphological rules safely.
-    // Their sequence of application is important: match the longest
-    // one first!
-    pos = ( unknownWordsPOS[ word.slice( -4 ) ] ||
-            ( unknownWordsPOS[ word.slice( -3 ) ] ||
-              ( unknownWordsPOS[ word.slice( -2 ) ] ||
-                  unknownWordsPOS[ word.slice( -1 ) ] ) ) );
-    if ( !pos && word.slice( 0, 2 ) === 'un' && lexicon[ word.slice( 2 ) ] ) {
-      pos = 'JJ';
+  if ( index || adjExceptions[ word ] || nounExceptions[ word] || verbExceptions[ word ] || isPotentialWord( word ) ) {
+    if ( index && senseMap[ index ][ 0 ] === 15 && ( /^[A-Z][a-z]+/ ).test( token.value ) ) {
+      pos = 'NNP';
+    } else {
+      // Word exists, can apply morphological rules safely.
+      // Their sequence of application is important: match the longest
+      // one first!
+      pos = ( unknownWordsPOS[ word.slice( -4 ) ] ||
+              ( unknownWordsPOS[ word.slice( -3 ) ] ||
+                ( unknownWordsPOS[ word.slice( -2 ) ] ||
+                    unknownWordsPOS[ word.slice( -1 ) ] ) ) );
+      if ( !pos && word.slice( 0, 2 ) === 'un' && lexicon[ word.slice( 2 ) ] ) {
+        pos = 'JJ';
+      }
     }
   } else {
     // Seems like an unknown word, make it proper noun!

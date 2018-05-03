@@ -321,14 +321,16 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
     expect( tagSentence( 'I can\'t do' ) ).to.deep.equal( output );
   } );
 
-  it( 'should tag a sentence containing \'ve', function () {
+  it( 'should tag a sentence containing \'ve & a country/NNP', function () {
     var output = [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
                    { value: '\'ve', tag: 'word', normal: '\'ve', pos: 'VBP', lemma: 'have' },
                    { value: 'got', tag: 'word', normal: 'got', pos: 'VBN', lemma: 'get' },
                    { value: 'a', tag: 'word', normal: 'a', pos: 'DT' },
-                   { value: 'gem', tag: 'word', normal: 'gem', pos: 'NN', lemma: 'gem' } ];
+                   { value: 'gem', tag: 'word', normal: 'gem', pos: 'NN', lemma: 'gem' },
+                   { value: 'from', tag: 'word', normal: 'from', pos: 'IN' },
+                   { value: 'India', tag: 'word', normal: 'india', pos: 'NNP' } ];
 
-    expect( tagSentence( 'I\'ve got a gem' ) ).to.deep.equal( output );
+    expect( tagSentence( 'I\'ve got a gem from India' ) ).to.deep.equal( output );
   } );
 
   it( 'should tag a sentence containing \'s as verb', function () {
