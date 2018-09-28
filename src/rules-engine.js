@@ -34,9 +34,9 @@ var valueCRsLE0 = require( './rules/value-rules-le0.js' );
  * Tests the **value** of token's property defined by `rule.operand.property`
  * using regex `rule.matches` at `rule.operand.delta` away from `cti`.
  *
- * @param {object[]} tokens — in wink-tokenizer standards.
- * @param {number} cti — current token's index.
- * @param {object} rule — containing keys `op`, `operand` and `matches` and their
+ * @param {object[]} tokens in wink-tokenizer standards.
+ * @param {number} cti current token's index.
+ * @param {object} rule containing keys `op`, `operand` and `matches` and their
  * corresponding values.
  * @return {boolean} `true` if match occurs otherwise `false`.
  * @private
@@ -55,9 +55,9 @@ var testValueAtDelta = function ( tokens, cti, rule ) {
  * `rule.operand.range`. The array is a 2-element array specifying the range,
  * which is added to `cti` to compute the actual range.
  *
- * @param {object[]} tokens — in wink-tokenizer standards.
- * @param {number} cti — current token's index.
- * @param {object} rule — containing keys `op`, `operand` and `matches` and their
+ * @param {object[]} tokens in wink-tokenizer standards.
+ * @param {number} cti current token's index.
+ * @param {object} rule containing keys `op`, `operand` and `matches` and their
  * corresponding values.
  * @return {boolean} `true` if match occurs otherwise `false`.
  * @private
@@ -82,10 +82,10 @@ operation[ K.TEST_VALUE_IN_RANGE ] = testValueInRange;
  * trigger change in the POS at token specified by `thenPosAt` relative distance.
  * The change is applied only if the new POS is amongst one of the valid POSes.
  *
- * @param {object[]} tokens — in wink-tokenizer standards.
- * @param {number} cti — current token's index.
- * @param {object} contextRule — contains the specific rule.
- * @param {array[]} poses — each element is an array & contains valid POSes for
+ * @param {object[]} tokens in wink-tokenizer standards.
+ * @param {number} cti current token's index.
+ * @param {object} contextRule contains the specific rule.
+ * @param {array[]} poses each element is an array & contains valid POSes for
  * the token at that index in `tokens`.
  * @return {boolean} `true` if pos change occurs otherwise `false`.
  * @private
@@ -111,10 +111,10 @@ var applyContextRule = function ( tokens, cti, contextRule, poses ) {
  * are tried until either a POS change has occurred or all rules have been exhausted
  * without any change.
  *
- * @param {object[]} tokens — in wink-tokenizer standards.
- * @param {object} contextRules — contains rules for different POSes. The rules to
+ * @param {object[]} tokens in wink-tokenizer standards.
+ * @param {object} contextRules contains rules for different POSes. The rules to
  * be applied is selected on the basis of POS of the current token.
- * @param {array[]} poses — each element is an array & contains valid POSes for
+ * @param {array[]} poses each element is an array & contains valid POSes for
  * the token at that index in `tokens`.
  * @return {void} Nothing!
  * @private
@@ -138,8 +138,8 @@ var applyContextRules = function ( tokens, contextRules, poses ) {
  * one of them is further categorized on the basis of if the **delta/range** values
  * are **positive** or **negative**. It applies these rules in the required sequence.
  *
- * @param {object[]} tokens — in wink-tokenizer standards.
- * @param {array[]} poses — each element is an array & contains valid POSes for
+ * @param {object[]} tokens in wink-tokenizer standards.
+ * @param {array[]} poses each element is an array & contains valid POSes for
  * the token at that index in `tokens`.
  * @return {void} Nothing!
  * @private

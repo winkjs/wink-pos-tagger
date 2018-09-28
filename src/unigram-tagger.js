@@ -67,7 +67,7 @@ const rgxs4POS = [
  * Checks if the supplied `word` is potentially a valid English word by
  * applying regexes sequentially and performaling a level-2 look up.
  *
- * @param {string} word — that needs to be checked
+ * @param {string} word that needs to be checked
  * @return {boolean} true if it is a potential English word, otherwise false.
  * @private
 */
@@ -88,9 +88,9 @@ var isPotentialWord = function ( word ) {
  * to apply morphological rules if token is found in the level-2 lookup.
  * Finally falls bact to NNP!
  *
- * @param {object} token — that needs to be tagged; must follow wink-tokenizer.
+ * @param {object} token that needs to be tagged; must follow wink-tokenizer.
  * standards.
- * @param {object} lexicon — containing word/pos key/value pairs.
+ * @param {object} lexicon containing word/pos key/value pairs.
  * @return {array} the array of all possible part-of-speeches.
  * @private
 */
@@ -132,9 +132,9 @@ var unigramL2POSTagger = function ( token, lexicon ) {
  * morphological rules if the primary look up fails but secondary one succeeds.
  * Finally falls bact to NNP!
  *
- * @param {object} token — that needs to be tagged; must follow wink-tokenizer.
+ * @param {object} token that needs to be tagged; must follow wink-tokenizer.
  * standards.
- * @param {object} lexicon — containing word/pos key/value pairs.
+ * @param {object} lexicon containing word/pos key/value pairs.
  * @return {array} the array of all possible part-of-speeches.
  * @private
 */
