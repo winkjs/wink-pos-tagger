@@ -1,635 +1,104 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset='utf-8' />
-  <title>wink-pos-tagger 1.5.0 | Documentation</title>
-  <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
-  <link href='assets/style.css' type='text/css' rel='stylesheet' />
-  <link href='assets/github.css' type='text/css' rel='stylesheet' />
-  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class='documentation m0'>
-    <div class='flex'>
-      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
-        <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>wink-pos-tagger</h3>
-          <div class='mb1'><code>1.5.0</code></div>
-          <input
-            placeholder='Filter'
-            id='filter-input'
-            class='col12 block input'
-            type='text' />
-          <div id='toc'>
-            <ul class='list-reset h5 py1-ul'>
-              
-                
-                <li><a
-                  href='#introduction'
-                  class="h5 bold black caps">
-                  Introduction
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#creating-an-instance'
-                  class="h5 bold black caps">
-                  Creating an Instance
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#postagger'
-                  class="">
-                  posTagger
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#api-methods'
-                  class="h5 bold black caps">
-                  API Methods
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#defineconfig'
-                  class="">
-                  defineConfig
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#tagsentence'
-                  class="">
-                  tagSentence
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#tag'
-                  class="">
-                  tag
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#updatelexicon'
-                  class="">
-                  updateLexicon
-                  
-                </a>
-                
-                </li>
-              
-            </ul>
-          </div>
-          <div class='mt1 h6 quiet'>
-            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
-          </div>
-        </div>
-      </div>
-      <div id='split-right' class='relative overflow-auto height-viewport-100'>
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+<body>
 
-  <h2 id='introduction' class='mt0'>
-    Introduction
-  </h2>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-  
-    <h1>wink-pos-tagger</h1>
-<p>English Part-of-speech (POS) tagger</p>
-<h3><a href="https://travis-ci.org/winkjs/wink-pos-tagger"><img src="https://api.travis-ci.org/winkjs/wink-pos-tagger.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-pos-tagger?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-pos-tagger/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-pos-tagger"><img src="http://inch-ci.org/github/winkjs/wink-pos-tagger.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-pos-tagger"><img src="https://david-dm.org/winkjs/wink-pos-tagger/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-pos-tagger?type=dev"><img src="https://david-dm.org/winkjs/wink-pos-tagger/dev-status.svg" alt="devDependencies Status"></a></h3>
-<p><a href="http://winkjs.org/"><img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" ></a></p>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-pos-tagger" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Tagger.html">Tagger</a><ul class='methods'><li data-type='method'><a href="Tagger.html#.defineConfig">defineConfig</a></li><li data-type='method'><a href="Tagger.html#.tag">tag</a></li><li data-type='method'><a href="Tagger.html#.tagSentence">tagSentence</a></li><li data-type='method'><a href="Tagger.html#.updateLexicon">updateLexicon</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#posTagger">posTagger</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>wink-pos-tagger</h1><p>English Part-of-speech (POS) tagger</p>
+<h3><a href="https://travis-ci.org/winkjs/wink-pos-tagger"><img src="https://api.travis-ci.org/winkjs/wink-pos-tagger.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/winkjs/wink-pos-tagger?branch=master"><img src="https://coveralls.io/repos/github/winkjs/wink-pos-tagger/badge.svg?branch=master" alt="Coverage Status"></a> <a href="http://inch-ci.org/github/winkjs/wink-pos-tagger"><img src="http://inch-ci.org/github/winkjs/wink-pos-tagger.svg?branch=master" alt="Inline docs"></a> <a href="https://david-dm.org/winkjs/wink-pos-tagger"><img src="https://david-dm.org/winkjs/wink-pos-tagger/status.svg" alt="dependencies Status"></a> <a href="https://david-dm.org/winkjs/wink-pos-tagger?type=dev"><img src="https://david-dm.org/winkjs/wink-pos-tagger/dev-status.svg" alt="devDependencies Status"></a> <a href="https://gitter.im/winkjs/Lobby"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a></h3><p><a href="http://winkjs.org/"><img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" ></a></p>
 <p>Perform part-of-speech tagging of english sentences using <strong><code>wink-pos-tagger</code></strong>. It is a part of <a href="http://winkjs.org/">wink</a> — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.</p>
-<h3>Installation</h3>
-<p>Use <a href="https://www.npmjs.com/package/wink-pos-tagger">npm</a> to install:</p>
-<pre><code>npm install wink-pos-tagger --save
-</code></pre>
-<h3>Getting Started</h3>
-<p>The code below illustrates the steps required to pos tag a sentence:</p>
-<pre class='hljs'><span class="hljs-comment">// Load wink-pos-tagger.</span>
-<span class="hljs-keyword">var</span> posTagger = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-pos-tagger'</span> );
+<h3>Installation</h3><p>Use <a href="https://www.npmjs.com/package/wink-pos-tagger">npm</a> to install:</p>
+<pre class="prettyprint source"><code>npm install wink-pos-tagger --save</code></pre><h3>Getting Started</h3><p>The code below illustrates the steps required to pos tag a sentence:</p>
+<pre class="prettyprint source lang-javascript"><code>// Load wink-pos-tagger.
+var posTagger = require( 'wink-pos-tagger' );
 
-<span class="hljs-comment">// Create an instance of the pos tagger.</span>
-<span class="hljs-keyword">var</span> tagger = posTagger();
+// Create an instance of the pos tagger.
+var tagger = posTagger();
 
-<span class="hljs-comment">// Tag the sentence using the tag sentence api.</span>
-tagger.tagSentence( <span class="hljs-string">'He is trying to fish for fish in the lake.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'He', tag: 'word', normal: 'he', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },</span>
-<span class="hljs-comment">//      { value: 'trying', tag: 'word', normal: 'trying', pos: 'VBG', lemma: 'try' },</span>
-<span class="hljs-comment">//      { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },</span>
-<span class="hljs-comment">//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'VB', lemma: 'fish' },</span>
-<span class="hljs-comment">//      { value: 'for', tag: 'word', normal: 'for', pos: 'IN' },</span>
-<span class="hljs-comment">//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'NN', lemma: 'fish' },</span>
-<span class="hljs-comment">//      { value: 'in', tag: 'word', normal: 'in', pos: 'IN' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'lake', tag: 'word', normal: 'lake', pos: 'NN', lemma: 'lake' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
-<p>Notice the way instances of the word "fish" have been tagged as <strong>verb</strong> and <strong>noun</strong>.</p>
-<h3>Documentation</h3>
-<p>Check out the <a href="http://winkjs.org/wink-pos-tagger/">pos tagger API documentation</a> to learn more.</p>
-<h3>Need Help?</h3>
-<p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-pos-tagger/issues">issue</a> or consider fixing it and sending a pull request.</p>
-<h3>Copyright &#x26; License</h3>
-<p><strong>wink-pos-tagger</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
+// Tag the sentence using the tag sentence api.
+tagger.tagSentence( 'He is trying to fish for fish in the lake.' );
+// -> [ { value: 'He', tag: 'word', normal: 'he', pos: 'PRP' },
+//      { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },
+//      { value: 'trying', tag: 'word', normal: 'trying', pos: 'VBG', lemma: 'try' },
+//      { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
+//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'VB', lemma: 'fish' },
+//      { value: 'for', tag: 'word', normal: 'for', pos: 'IN' },
+//      { value: 'fish', tag: 'word', normal: 'fish', pos: 'NN', lemma: 'fish' },
+//      { value: 'in', tag: 'word', normal: 'in', pos: 'IN' },
+//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+//      { value: 'lake', tag: 'word', normal: 'lake', pos: 'NN', lemma: 'lake' },
+//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</code></pre><p>Notice the way instances of the word &quot;fish&quot; have been tagged as <strong>verb</strong> and <strong>noun</strong>.</p>
+<h3>Documentation</h3><p>Check out the <a href="http://winkjs.org/wink-pos-tagger/">pos tagger API documentation</a> to learn more.</p>
+<h3>Need Help?</h3><p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-pos-tagger/issues">issue</a> or consider fixing it and sending a pull request.</p>
+<h3>Copyright &amp; License</h3><p><strong>wink-pos-tagger</strong> is copyright 2017-18 <a href="http://graype.in/">GRAYPE Systems Private Limited</a>.</p>
 <p>It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
-Software Foundation, version 3 of the License.</p>
+Software Foundation, version 3 of the License.</p></article>
+    </section>
 
-  
-</section>
+
+
+
+
+
+    
+    
 </div>
-          
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
 
-  <h2 id='creating-an-instance' class='mt0'>
-    Creating an Instance
-  </h2>
+<br class="clear">
 
-  
-    
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Sep 28 2018 12:51:41 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
 
-  
-</section>
-</div>
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='postagger'>
-      posTagger
-    </h3>
-    
-    
-  </div>
-  
 
-  <p>Creates an instance of <strong><code>wink-pos-tagger</code></strong>.</p>
-
-
-  <div class='pre p1 fill-light mt0'>posTagger(): methods</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>methods</code>:
-        object conatining set of API methods for pos-tagging — 
-<a href="#tag">tag</a>
-
-and for updating lexicon — 
-<a href="#updatelexicon">updateLexicon</a>
-.
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Load wink tokenizer.</span>
-<span class="hljs-keyword">var</span> tagger = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-pos-tagger'</span> );
-<span class="hljs-comment">// Create your instance of wink tokenizer.</span>
-<span class="hljs-keyword">var</span> myTagger = tagger();</pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
-
-  <h2 id='api-methods' class='mt0'>
-    API Methods
-  </h2>
-
-  
-    
-
-  
-</section>
-</div>
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='defineconfig'>
-      defineConfig
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>This API has no effect. It has been maintained for compatibility purpose.
-The <code>wink-tokenizer</code> will now always add <strong>lemma</strong> and <strong>normal</strong> forms.
-Note, lemmas are added only for <strong>nouns</strong> (excluding proper noun), <strong>verbs</strong> and
-<strong>adjectives</strong>.</p>
-
-
-  <div class='pre p1 fill-light mt0'>defineConfig(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
-        always as 
-<code>{ lemma: true, normal: true }</code>
-.
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// There will not be any effect:</span>
-<span class="hljs-keyword">var</span> myTagger.defineConfig( { <span class="hljs-attr">lemma</span>: <span class="hljs-literal">false</span> } );
-<span class="hljs-comment">// -&gt; { lemma: true, normal: true }</span></pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='tagsentence'>
-      tagSentence
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Tags the input <code>sentence</code> with their <strong>pos</strong>.</p>
-
-
-  <div class='pre p1 fill-light mt0'>tagSentence(sentence: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>sentence</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    — to be pos tagged.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
-        pos tagged 
-<code>tokens.</code>
-
-      
-    
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
-    <ul>
-      
-        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
-<code>sentence</code>
- is not a valid string.
-</li>
-      
-    </ul>
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'>myTagger.tagSentence( <span class="hljs-string">'A bear just crossed the road.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'A', tag: 'word', normal: 'a', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'NN', lemma: 'bear' },</span>
-<span class="hljs-comment">//      { value: 'just', tag: 'word', normal: 'just', pos: 'RB' },</span>
-<span class="hljs-comment">//      { value: 'crossed', tag: 'word', normal: 'crossed', pos: 'VBD', lemma: 'cross' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'road', tag: 'word', normal: 'road', pos: 'NN', lemma: 'road' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">//</span>
-myTagger.tagSentence( <span class="hljs-string">'I will bear all the expenses.'</span> );
-<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'will', tag: 'word', normal: 'will', pos: 'MD', lemma: 'will' },</span>
-<span class="hljs-comment">//      { value: 'bear', tag: 'word', normal: 'bear', pos: 'VB', lemma: 'bear' },</span>
-<span class="hljs-comment">//      { value: 'all', tag: 'word', normal: 'all', pos: 'PDT' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'expenses', tag: 'word', normal: 'expenses', pos: 'NNS', lemma: 'expense' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='tag'>
-      tag
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Tags the input <code>tokens</code> with their <strong>pos</strong>.</p>
-
-
-  <div class='pre p1 fill-light mt0'>tag(tokens: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>tokens</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>>)</code>
-	    — to be pos tagged. They are array of objects and
-must follow the 
-<a href="http://winkjs.org/wink-tokenizer/"><strong><code>wink-tokenizer</code></strong></a>
-
-standard.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>></code>:
-        pos tagged 
-<code>tokens</code>
-.
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Get `tokenizer` method from the instance of `wink-tokenizer`.</span>
-<span class="hljs-keyword">var</span> tokenize = <span class="hljs-built_in">require</span>( <span class="hljs-string">'wink-tokenizer'</span> )().tokenize;
-<span class="hljs-comment">// Tag the tokenized sentence.</span>
-myTagger.tag( tokenize( <span class="hljs-string">'I ate the entire pizza as I was feeling hungry.'</span> ) );
-<span class="hljs-comment">// -&gt; [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },</span>
-<span class="hljs-comment">//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },</span>
-<span class="hljs-comment">//      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ', lemma: 'entire' },</span>
-<span class="hljs-comment">//      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },</span>
-<span class="hljs-comment">//      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },</span>
-<span class="hljs-comment">//      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },</span>
-<span class="hljs-comment">//      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },</span>
-<span class="hljs-comment">//      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },</span>
-<span class="hljs-comment">//      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ', lemma: 'hungry' },</span>
-<span class="hljs-comment">//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</span></pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='updatelexicon'>
-      updateLexicon
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Updates the internal lexicon using the input <code>lexicon</code>. If a word/pos pair
-is found in the internal lexicon then it's value is updated with the new pos;
-otherwise it added.</p>
-
-
-  <div class='pre p1 fill-light mt0'>updateLexicon(lexicon: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>lexicon</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
-	    — containing 
-<strong><code>word/pos</code></strong>
- pairs to be added to or
-replaced in the existing lexicon. The 
-<code>pos</code>
- should be an array containing
-pos tags, with the first one as the most frequently used POS. The 
-<code>word</code>
- is
-normalized before updating the internal lexicon.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
-        Nothing!
-
-      
-    
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
-    <ul>
-      
-        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: if 
-<code>lexicon</code>
- is not a valid JS object.
-</li>
-      
-    </ul>
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'>myTagger.updateLexicon( { <span class="hljs-attr">Obama</span>: [ <span class="hljs-string">'NNP'</span> ] } );</pre>
-    
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-      </div>
-    </div>
-  <script src='assets/anchor.js'></script>
-  <script src='assets/split.js'></script>
-  <script src='assets/site.js'></script>
 </body>
 </html>
