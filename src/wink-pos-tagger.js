@@ -73,7 +73,7 @@ var posTagger = function ( ) {
    * is found in the internal lexicon then it's value is updated with the new pos;
    * otherwise it added.
    *
-   * @method Tagger.updateLexicon
+   * @method Tagger#updateLexicon
    * @param {object} lexicon containing **`word/pos`** pairs to be added to or
    * replaced in the existing lexicon. The `pos` should be an array containing
    * pos tags, with the first one as the most frequently used POS. The `word` is
@@ -99,7 +99,7 @@ var posTagger = function ( ) {
    * Note, lemmas are added only for **nouns** (excluding proper noun), **verbs** and
    * **adjectives**.
    *
-   * @method Tagger.defineConfig
+   * @method Tagger#defineConfig
    * @return {object} always as `{ lemma: true, normal: true }`.
    * @example
    * // There will not be any effect:
@@ -117,7 +117,7 @@ var posTagger = function ( ) {
    * This API has no effect. It has been maintained for compatibility purpose.
    * The `wink-tokenizer` will now always add **lemma** and **normal** forms.
    *
-   * @method Tagger.lemmatize
+   * @method Tagger#lemmatize
    * @param {object[]} tokens to be lemmatized.
    * @return {object[]} lemmatized tokens.
    * @private
@@ -164,7 +164,7 @@ var posTagger = function ( ) {
    *
    * Tags the input `tokens` with their **pos**.
    *
-   * @method Tagger.tag
+   * @method Tagger#tag
    * @param {object[]} tokens to be pos tagged. They are array of objects and
    * must follow the [**`wink-tokenizer`**](http://winkjs.org/wink-tokenizer/)
    * standard.
@@ -208,7 +208,7 @@ var posTagger = function ( ) {
    *
    * Tags the input `sentence` with their **pos**.
    *
-   * @method Tagger.tagSentence
+   * @method Tagger#tagSentence
    * @param {string} sentence to be pos tagged.
    * @return {object[]} pos tagged `tokens.`
    * @throws {Error} if `sentence` is not a valid string.
