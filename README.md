@@ -6,7 +6,7 @@ English Part-of-speech (POS) tagger
 
 [<img align="right" src="https://decisively.github.io/wink-logos/logo-title.png" width="100px" >](http://winkjs.org/)
 
-Perform part-of-speech tagging of english sentences using **`wink-pos-tagger`**. It is a part of [wink](http://winkjs.org/) — a growing family of high quality packages for Statistical Analysis, Natural Language Processing and Machine Learning in NodeJS.
+Perform part-of-speech tagging of english sentences using **`wink-pos-tagger`**. It is based on transformation based learning (TBL) approach pioneered by Eric Brill.
 
 ### Installation
 
@@ -47,9 +47,11 @@ Check out the [pos tagger API documentation](http://winkjs.org/wink-pos-tagger/)
 
 If you spot a bug and the same has not yet been reported, raise a new [issue](https://github.com/winkjs/wink-pos-tagger/issues) or consider fixing it and sending a pull request.
 
+### About wink
+[Wink](http://winkjs.org/) is a family of open source packages for **Statistical Analysis**, **Natural Language Processing** and **Machine Learning** in NodeJS. The code is **thoroughly documented** for easy human comprehension and has a **test coverage of ~100%** for reliability to build production grade solutions.
+
 ### Copyright & License
 
 **wink-pos-tagger** is copyright 2017-18 [GRAYPE Systems Private Limited](http://graype.in/).
 
-It is licensed under the under the terms of the GNU Affero General Public License as published by the Free
-Software Foundation, version 3 of the License.
+It is licensed under the terms of the MIT License.
