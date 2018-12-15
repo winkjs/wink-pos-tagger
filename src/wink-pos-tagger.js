@@ -165,7 +165,11 @@ var posTagger = function ( ) {
   // ### tag
   /**
    *
-   * Tags the input `tokens` with their **pos**.
+   * Tags the input **`tokens`** with their **pos**.
+   *
+   * *In order to pos tag a sentence directly, use
+   * [`tagSentence`](http://winkjs.org/wink-pos-tagger/Tagger.html#tagSentence)
+   * API instead.*
    *
    * @method Tagger#tag
    * @param {object[]} tokens to be pos tagged. They are array of objects and
