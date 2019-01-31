@@ -1,7 +1,7 @@
 //     wink-pos-tagger
 //     English Part-of-speech (POS) tagger
 //
-//     Copyright (C) 2017-18  GRAYPE Systems Private Limited
+//     Copyright (C) 2017-19  GRAYPE Systems Private Limited
 //
 //     This file is part of “wink-pos-tagger”.
 //
