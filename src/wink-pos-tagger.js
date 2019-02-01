@@ -47,6 +47,31 @@ lemmaExceptions[ '\'m' ] = 'am';
 lemmaExceptions[ '\'re' ] = 'be';
 lemmaExceptions[ 'n\'t' ] = 'not';
 lemmaExceptions[ '\'d' ] = 'would';
+// Needed for simple NNP transformation rule.
+const capA = 'A';
+const capZ = 'Z';
+// Required in raw tokens tagging
+const rgxNumber = /^\d+\/\d+|\d(?:[\.\,\-\/]?\d)*(?:\.\d+)?$/;
+const rgxPunctuation = /^[\’\'\‘\’\`\“\”\"\[\]\(\)\{\}\…\,\.\!\;\?\-\:]+$/;
+// Used in tagging years.
+const year = Object.create( null );
+year[ '1990s' ] = 'CD';
+year[ '1980s' ] = 'CD';
+year[ '1970s' ] = 'CD';
+year[ '1960s' ] = 'CD';
+year[ '1950s' ] = 'CD';
+year[ '1940s' ] = 'CD';
+year[ '1930s' ] = 'CD';
+year[ '1910s' ] = 'CD';
+year[ 'mid-1990s' ] = 'CD';
+year[ 'mid-1980s' ] = 'CD';
+year[ 'mid-1970s' ] = 'CD';
+year[ 'mid-1960s' ] = 'CD';
+year[ 'mid-1950s' ] = 'CD';
+year[ 'mid-1940s' ] = 'CD';
+year[ 'mid-1930s' ] = 'CD';
+year[ 'mid-1920s' ] = 'CD';
+year[ 'mid-1910s' ] = 'CD';
 
 // ### posTagger
 /**
@@ -117,8 +142,8 @@ var posTagger = function ( ) {
   // ### lemmatize
   /**
    *
-   * This API has no effect. It has been maintained for compatibility purpose.
-   * The `wink-tokenizer` will now always add **lemma** and **normal** forms.
+   * Performs lemmatization; also applies NNP transformation rules for captitalized
+   * nouns and adjectives and CD rule for years.
    *
    * @method Tagger#lemmatize
    * @param {object[]} tokens to be lemmatized.
@@ -126,11 +151,15 @@ var posTagger = function ( ) {
    * @private
   */
   var lemmatize = function ( tokens ) {
-    var t, w;
+    var t, v0, w;
     var lemma;
+    var tpos;
     for ( let i = 0, imax = tokens.length; i < imax; i += 1 ) {
       t = tokens[ i ];
       w = t.normal;
+      v0 = t.value[ 0 ];
+      tpos = year[ w ];
+      if ( tpos ) t.pos = 'CD';
       // First handle exceptions arising out of contractions.
       lemma = lemmaExceptions[ w ];
       if ( lemma ) {
@@ -139,7 +168,12 @@ var posTagger = function ( ) {
         // Otherwise use lemmatizer.
         switch ( t.pos[ 0 ] ) {
           case 'J':
-            t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
+            if ( ( v0 >= capA ) && ( v0 <= capZ ) ) {
+              t.lemma = w;
+              t.pos = 'NNP';
+            } else {
+              t.lemma = ( t.pos.length > 2 ) ? lemmatizeJJX( w ) : w;
+            }
             break;
           case 'V':
             t.lemma = ( t.pos.length > 2 ) ?
@@ -147,8 +181,13 @@ var posTagger = function ( ) {
                         w;
             break;
           case 'N':
-            // No lemmatization of NNPs please!
-            if ( t.pos !== 'NNP' ) t.lemma = ( t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
+            if ( ( v0 >= capA ) && ( v0 <= capZ ) ) {
+              t.lemma = w;
+              t.pos = 'NNP';
+            } else {
+              // No lemmatization of NNPs please!
+              t.lemma = ( t.pos !== 'NNP' && t.pos.length > 2 ) ? lemmatizeNNX( w ) : w;
+            }
             break;
           case 'M':
             t.lemma = lemmatizeVBX( w );
@@ -210,6 +249,22 @@ var posTagger = function ( ) {
     return tokens;
   }; // tagTokens();
 
+  var tagRawTokens = function ( tokens ) {
+    // Will contain tokens transformed into wink format tokens
+    var wt = [];
+    var t;
+    for ( var i = 0, imax = tokens.length; i < imax; i += 1 ) {
+      t = tokens[ i ];
+      if ( rgxNumber.test( t ) ) {
+        wt.push( { value: t, tag: 'number' } );
+      } else if ( rgxPunctuation.test( t ) ) {
+        wt.push( { value: t, tag: 'punctuation' } );
+      } else wt.push( { value: t, tag: 'word' } );
+    }
+
+    return tag( wt );
+  }; // tagRawTokens()
+
   // ### tagSentence
   /**
    *
@@ -248,6 +303,8 @@ var posTagger = function ( ) {
 
   methods.updateLexicon = updateLexicon;
   methods.tag = tag;
+  methods.tagTokens = tag;
+  methods.tagRawTokens = tagRawTokens;
   methods.tagSentence = tagSentence;
   methods.defineConfig = defineConfig;
 

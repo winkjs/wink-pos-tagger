@@ -37,6 +37,7 @@ var it = mocha.it;
 
 var tag = tagger.tag;
 var tagSentence = tagger.tagSentence;
+var tagRawTokens = tagger.tagRawTokens;
 var defineConfig = tagger.defineConfig;
 var updateLexicon = tagger.updateLexicon;
 
@@ -90,7 +91,7 @@ describe( 'wink-pos-tagger', function () {
 
   it( 'should use WDT rule: seems so Indian English!', function () {
       var output = [ { value: 'what', tag: 'word', pos: 'WP', normal: 'what' },
-                     { value: 'o\'hara', tag: 'word', pos: 'NNP', normal: 'o\'hara' } ];
+                     { value: 'o\'hara', tag: 'word', pos: 'NNP', normal: 'o\'hara', lemma: 'o\'hara' } ];
       expect( tag( tk( 'what o\'hara' ) ) ).to.deep.equal( output );
   } );
 
@@ -112,7 +113,7 @@ describe( 'wink-pos-tagger/entity', function () {
       var output = [ { value: 'I', tag: 'word', pos: 'PRP', normal: 'i' },
                      { value: 'live', tag: 'word', pos: 'VBP', normal: 'live', lemma: 'live' },
                      { value: 'in', tag: 'word', pos: 'IN', normal: 'in' },
-                     { value: 'denmark', tag: 'word', pos: 'NNP', entityType: 'location', normal: 'denmark' } ];
+                     { value: 'denmark', tag: 'word', pos: 'NNP', entityType: 'location', normal: 'denmark', lemma: 'denmark' } ];
       expect( tagger.tag( [
                             { value: 'I', tag: 'word' },
                             { value: 'live', tag: 'word' },
@@ -215,7 +216,7 @@ describe( 'wink-pos-tagger/defineConfig', function () {
 
 describe( 'wink-pos-tagger/normalization', function () {
   it( 'should add of normal in tokens properly', function () {
-    var output = [ { value: 'Nestlé', tag: 'word', pos: 'NN', normal: 'nestle', lemma: 'nestle' },
+    var output = [ { value: 'Nestlé', tag: 'word', pos: 'NNP', normal: 'nestle', lemma: 'nestle' },
                { value: 'is', tag: 'word', pos: 'VBZ', normal: 'is', lemma: 'be' },
                { value: 'an', tag: 'word', pos: 'DT', normal: 'an' },
                { value: 'organization', tag: 'word', pos: 'NN', normal: 'organization', lemma: 'organization' } ];
@@ -298,7 +299,7 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
                    { value: 'today', tag: 'word', normal: 'today', pos: 'NN', lemma: 'today' },
                    { value: 'to', tag: 'word', normal: 'to', pos: 'TO' },
                    { value: 'meet', tag: 'word', normal: 'meet', pos: 'VB', lemma: 'meet' },
-                   { value: 'O\'Hara', tag: 'word', normal: 'o\'hara', pos: 'NNP' } ];
+                   { value: 'O\'Hara', tag: 'word', normal: 'o\'hara', pos: 'NNP', lemma: 'o\'hara' } ];
 
     updateLexicon( { 'O\'Hara': [ 'NNP' ] } );
     expect( tagSentence( 'I shan\'t go today to meet O\'Hara' ) ).to.deep.equal( output );
@@ -331,7 +332,7 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
                    { value: 'a', tag: 'word', normal: 'a', pos: 'DT' },
                    { value: 'gem', tag: 'word', normal: 'gem', pos: 'NN', lemma: 'gem' },
                    { value: 'from', tag: 'word', normal: 'from', pos: 'IN' },
-                   { value: 'India', tag: 'word', normal: 'india', pos: 'NNP' } ];
+                   { value: 'India', tag: 'word', normal: 'india', pos: 'NNP', lemma: 'india' } ];
 
     expect( tagSentence( 'I\'ve got a gem from India' ) ).to.deep.equal( output );
   } );
@@ -353,7 +354,7 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
   it( 'should tag a sentence containing \'s as POS', function () {
     var output = [ { value: 'This', tag: 'word', normal: 'this', pos: 'DT' },
                    { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },
-                   { value: 'John', tag: 'word', normal: 'john', pos: 'NN', lemma: 'john' },
+                   { value: 'John', tag: 'word', normal: 'john', pos: 'NNP', lemma: 'john' },
                    { value: '\'s', tag: 'word', normal: '\'s', pos: 'POS' },
                    { value: 'food', tag: 'word', normal: 'food', pos: 'NN', lemma: 'food' },
                    { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ];
@@ -373,7 +374,7 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
   } );
 
   it( 'should tag a sentence containing won\'t, unk verb and proper noun', function () {
-    var output = [ { value: 'Chris', tag: 'word', normal: 'chris', pos: 'NNP' },
+    var output = [ { value: 'Chris', tag: 'word', normal: 'chris', pos: 'NNP', lemma: 'chris' },
                    { value: 'wo', tag: 'word', normal: 'wo', pos: 'MD', lemma: 'will' },
                    { value: 'n\'t', tag: 'word', normal: 'n\'t', pos: 'RB', lemma: 'not' },
                    { value: 'forgo', tag: 'word', normal: 'forgo', pos: 'VB', lemma: 'forgo' },
@@ -382,5 +383,46 @@ describe( 'wink-pos-tagger/contractions & NNP', function () {
                    { value: '!', tag: 'punctuation', normal: '!', pos: '.' } ];
 
     expect( tagSentence( 'Chris won\'t forgo the tea!' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tag a captitalized word as NNP', function () {
+    var output = [ { value: 'Vishnu', tag: 'word', normal: 'vishnu', pos: 'NNP', lemma: 'vishnu' },
+                   { value: 'is', tag: 'word', normal: 'is', pos: 'VBZ', lemma: 'be' },
+                   { value: 'created', tag: 'word', normal: 'created', pos: 'VBN', lemma: 'create' },
+                   { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+                   { value: 'universe', tag: 'word', normal: 'universe', pos: 'NN', lemma: 'universe' },
+                   { value: '!', tag: 'punctuation', normal: '!', pos: '.' } ];
+
+    expect( tagSentence( 'Vishnu is created the universe!' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tags a containing captitalized JJ correctly as NNP', function () {
+    var output = [ { value: 'Walter', tag: 'word', pos: 'NNP', normal: 'walter', lemma: 'walter' },
+                   { value: 'Sisulu', tag: 'word', pos: 'NNP', normal: 'sisulu', lemma: 'sisulu' },
+                   { value: 'and', tag: 'word', pos: 'CC', normal: 'and' },
+                   { value: 'the', tag: 'word', pos: 'DT', normal: 'the' },
+                   { value: 'African', tag: 'word', pos: 'NNP', normal: 'african', lemma: 'african' },
+                   { value: 'National', tag: 'word', pos: 'NNP', normal: 'national', lemma: 'national' },
+                   { value: 'Congress', tag: 'word', pos: 'NNP', normal: 'congress', lemma: 'congress' },
+                   { value: 'came', tag: 'word', pos: 'VBD', normal: 'came', lemma: 'come' },
+                   { value: 'home', tag: 'word', pos: 'NN', normal: 'home', lemma: 'home' },
+                   { value: 'yesterday', tag: 'word', pos: 'NN', normal: 'yesterday', lemma: 'yesterday' },
+                   { value: '.', tag: 'punctuation', pos: '.', normal: '.' } ];
+
+    expect( tagSentence( 'Walter Sisulu and the African National Congress came home yesterday.' ) ).to.deep.equal( output );
+  } );
+
+  it( 'should tags raw tokens correctly', function () {
+    var output = [ { value: 'Umkhonto', tag: 'word', pos: 'NNP', normal: 'umkhonto', lemma: 'umkhonto' },
+                   { value: 'leader', tag: 'word', pos: 'NN', normal: 'leader', lemma: 'leader' },
+                   { value: 'who', tag: 'word', pos: 'WP', normal: 'who' },
+                   { value: 'was', tag: 'word', pos: 'VBD', normal: 'was', lemma: 'be' },
+                   { value: 'now', tag: 'word', pos: 'RB', normal: 'now' },
+                   { value: '63', tag: 'number', pos: 'CD', normal: '63' },
+                   { value: 'in', tag: 'word', pos: 'IN', normal: 'in' },
+                   { value: '1980s', tag: 'word', pos: 'CD', normal: '1980s' },
+                   { value: '.', tag: 'punctuation', pos: '.', normal: '.' } ];
+
+    expect( tagRawTokens( [ 'Umkhonto', 'leader', 'who', 'was', 'now', '63', 'in', '1980s', '.' ] ) ).to.deep.equal( output );
   } );
 } );
