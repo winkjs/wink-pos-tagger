@@ -26,7 +26,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-pos-tagger" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Tagger.html">Tagger</a><ul class='methods'><li data-type='method'><a href="Tagger.html#defineConfig">defineConfig</a></li><li data-type='method'><a href="Tagger.html#tag">tag</a></li><li data-type='method'><a href="Tagger.html#tagSentence">tagSentence</a></li><li data-type='method'><a href="Tagger.html#updateLexicon">updateLexicon</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#posTagger">posTagger</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="http://winkjs.org" target="_blank" >Wink JS</a></h2><h2><a href="https://github.com/winkjs/wink-pos-tagger" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Tagger.html">Tagger</a><ul class='methods'><li data-type='method'><a href="Tagger.html#defineConfig">defineConfig</a></li><li data-type='method'><a href="Tagger.html#tag">tag</a></li><li data-type='method'><a href="Tagger.html#tagRawTokens">tagRawTokens</a></li><li data-type='method'><a href="Tagger.html#tagSentence">tagSentence</a></li><li data-type='method'><a href="Tagger.html#updateLexicon">updateLexicon</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#posTagger">posTagger</a></li></ul>
 </nav>
 
 <div id="main">
@@ -243,7 +243,7 @@ var myTagger.defineConfig( { lemma: false } );
 
 
 <div class="description">
-    <p>Tags the input <strong><code>tokens</code></strong> with their <strong>pos</strong>.</p>
+    <p>Tags the input <strong><code>tokens</code></strong> with their <strong>pos</strong>. It has another alias – <strong><code>tagTokens()</code></strong>.</p>
 <p><em>In order to pos tag a sentence directly, use
 <a href="http://winkjs.org/wink-pos-tagger/Tagger.html#tagSentence"><code>tagSentence</code></a>
 API instead.</em></p>
@@ -370,6 +370,184 @@ standard.</p></td>
 
     
 
+    <h4 class="name" id="tagRawTokens"><span class="type-signature"></span>tagRawTokens<span class="signature">(rawTokens)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line253">line 253</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Tags the <strong><code>raw tokens</code></strong> with their <strong>pos</strong>. Note, it only categorizes each
+token in to one of the following 3-categories (a) word, or (b) punctuation,
+or (c) number.</p>
+<p><em>In order to pos tag a sentence directly, use
+<a href="http://winkjs.org/wink-pos-tagger/Tagger.html#tagSentence"><code>tagSentence</code></a>
+API instead.</em></p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var rawTokens = [ 'I', 'ate', 'the', 'entire', 'pizza', 'as', 'I', 'was', 'feeling', 'hungry', '.' ];
+// Tag the raw tokens.
+myTagger.tagRawTokens( rawTokens );
+// -> [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+//      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },
+//      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+//      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ', lemma: 'entire' },
+//      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },
+//      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },
+//      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+//      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },
+//      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },
+//      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ', lemma: 'hungry' },
+//      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>rawTokens</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>to be pos tagged. They are simple array of string.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>pos tagged <code>tokens</code>.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
     <h4 class="name" id="tagSentence"><span class="type-signature"></span>tagSentence<span class="signature">(sentence)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
 
     
@@ -382,7 +560,7 @@ standard.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line269">line 269</a>
+        <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line299">line 299</a>
     </li></ul></dd>
     
 
@@ -785,7 +963,7 @@ normalized before updating the internal lexicon.</p></td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 01 2019 16:10:22 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Feb 01 2019 17:29:27 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

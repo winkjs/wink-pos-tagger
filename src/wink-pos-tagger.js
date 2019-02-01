@@ -204,7 +204,7 @@ var posTagger = function ( ) {
   // ### tag
   /**
    *
-   * Tags the input **`tokens`** with their **pos**.
+   * Tags the input **`tokens`** with their **pos**. It has another alias – **`tagTokens()`**.
    *
    * *In order to pos tag a sentence directly, use
    * [`tagSentence`](http://winkjs.org/wink-pos-tagger/Tagger.html#tagSentence)
@@ -249,12 +249,42 @@ var posTagger = function ( ) {
     return tokens;
   }; // tagTokens();
 
-  var tagRawTokens = function ( tokens ) {
+  // ### tagRawTokens
+  /**
+   *
+   * Tags the **`raw tokens`** with their **pos**. Note, it only categorizes each
+   * token in to one of the following 3-categories (a) word, or (b) punctuation,
+   * or (c) number.
+   *
+   * *In order to pos tag a sentence directly, use
+   * [`tagSentence`](http://winkjs.org/wink-pos-tagger/Tagger.html#tagSentence)
+   * API instead.*
+   *
+   * @method Tagger#tagRawTokens
+   * @param {string[]} rawTokens to be pos tagged. They are simple array of string.
+   * @return {object[]} pos tagged `tokens`.
+   * @example
+   * var rawTokens = [ 'I', 'ate', 'the', 'entire', 'pizza', 'as', 'I', 'was', 'feeling', 'hungry', '.' ];
+   * // Tag the raw tokens.
+   * myTagger.tagRawTokens( rawTokens );
+   * // -> [ { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+   * //      { value: 'ate', tag: 'word', normal: 'ate', pos: 'VBD', lemma: 'eat' },
+   * //      { value: 'the', tag: 'word', normal: 'the', pos: 'DT' },
+   * //      { value: 'entire', tag: 'word', normal: 'entire', pos: 'JJ', lemma: 'entire' },
+   * //      { value: 'pizza', tag: 'word', normal: 'pizza', pos: 'NN', lemma: 'pizza' },
+   * //      { value: 'as', tag: 'word', normal: 'as', pos: 'IN' },
+   * //      { value: 'I', tag: 'word', normal: 'i', pos: 'PRP' },
+   * //      { value: 'was', tag: 'word', normal: 'was', pos: 'VBD', lemma: 'be' },
+   * //      { value: 'feeling', tag: 'word', normal: 'feeling', pos: 'VBG', lemma: 'feel' },
+   * //      { value: 'hungry', tag: 'word', normal: 'hungry', pos: 'JJ', lemma: 'hungry' },
+   * //      { value: '.', tag: 'punctuation', normal: '.', pos: '.' } ]
+  */
+  var tagRawTokens = function ( rawTokens ) {
     // Will contain tokens transformed into wink format tokens
     var wt = [];
     var t;
-    for ( var i = 0, imax = tokens.length; i < imax; i += 1 ) {
-      t = tokens[ i ];
+    for ( var i = 0, imax = rawTokens.length; i < imax; i += 1 ) {
+      t = rawTokens[ i ];
       if ( rgxNumber.test( t ) ) {
         wt.push( { value: t, tag: 'number' } );
       } else if ( rgxPunctuation.test( t ) ) {
