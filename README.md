@@ -8,6 +8,8 @@ English Part-of-speech (POS) tagger
 
 Perform part-of-speech tagging of english sentences using **`wink-pos-tagger`**. It is based on transformation based learning (TBL) approach pioneered by Eric Brill.
 
+Optimized for performance, it _pos-tags_ and _lemmatizes_ over **525,000 tokens per second** with an accuracy of **93.2%** on the standard WSJ22-24 test set. This was [benchmarked](https://github.com/bestiejs/benchmark.js) on 2.2 GHz Intel Core i7 machine with 16GB RAM using its `tagRawTokens()` API.
+
 ### Installation
 
 Use [npm](https://www.npmjs.com/package/wink-pos-tagger) to install:
