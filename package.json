@@ -50,6 +50,6 @@
     "wink-lemmatizer": "^3.0.1",
     "wink-lexicon": "^2.1.0",
     "wink-porter2-stemmer": "^2.0.0",
-    "wink-tokenizer": "^5.1.0"
+    "wink-tokenizer": "^5.2.0"
   }
 }
