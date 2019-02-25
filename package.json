@@ -1,6 +1,6 @@
 {
   "name": "wink-pos-tagger",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "English Part-of-speech (POS) tagger",
   "keywords": [
     "POS",
