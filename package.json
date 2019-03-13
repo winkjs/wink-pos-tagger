@@ -35,7 +35,7 @@
     "acorn": "^6.0.6",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "docdash": "^1.0.2",
+    "docdash": "winkjs/docdash",
     "docker": "^1.0.0",
     "eslint": "^5.12.1",
     "har-validator": "^5.1.3",
