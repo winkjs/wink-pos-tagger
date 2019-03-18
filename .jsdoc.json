@@ -7,6 +7,9 @@
   },
   "plugins": ["plugins/markdown"],
   "docdash": {
+    "meta": {
+      "title": "wink-pos-tagger - Wink JS"
+    },
     "menu":{
             "Github":{
                 "href":"https://github.com/winkjs/wink-pos-tagger",
