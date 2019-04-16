@@ -32,16 +32,16 @@
   },
   "homepage": "http://winkjs.org/",
   "devDependencies": {
-    "acorn": "^6.0.6",
+    "acorn": "^6.1.1",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.3",
     "docdash": "winkjs/docdash",
     "docker": "^1.0.0",
-    "eslint": "^5.12.1",
+    "eslint": "^5.16.0",
     "har-validator": "^5.1.3",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.5.5",
-    "mocha": "^5.2.0",
+    "mocha": "^6.1.3",
     "mocha-lcov-reporter": "^1.3.0"
   },
   "runkitExampleFilename": "./runkit/example.js",
@@ -50,6 +50,6 @@
     "wink-lemmatizer": "^3.0.1",
     "wink-lexicon": "^2.1.0",
     "wink-porter2-stemmer": "^2.0.0",
-    "wink-tokenizer": "^5.2.0"
+    "wink-tokenizer": "^5.2.1"
   }
 }
