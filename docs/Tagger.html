@@ -34,6 +34,10 @@
   ((window.gitter = {}).chat = {}).options = {
     room: 'winkjs/Lobby'
   };
+  window.onload = function () {
+      document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
+      document.querySelector('.gitter-open-chat-button').style.display = 'block';
+  }
 </script>
 <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -68,7 +72,13 @@ body {
 .navbar a {
   color: #fff;
   line-height: 60px;
+  margin-left: 0;
+}
+
+.navbar a.navbar-brand {
   margin-left: 20px;
+  display: block;
+  min-width: 40px;
 }
 
 .navbar-right {
@@ -87,10 +97,6 @@ body {
 }
 
 /* Override docdash */
-nav {
-  top: 80px;
-}
-
 #main {
   margin-top: 30px;
 }
@@ -98,6 +104,7 @@ nav {
 /* Gitter */
 .gitter-open-chat-button {
   background: #6C307D;
+  display: none;
 }
 
 .gitter-open-chat-button:hover {
@@ -118,6 +125,16 @@ window.addEventListener('DOMContentLoaded', function () {
       window.scrollTo( 0, (window.pageYOffset || document.documentElement.scrollTop) - 72);
     }, 0)
   }
+
+  document.getElementById('toc-button').addEventListener('click', function () {
+      if (document.getElementById('side-nav').className === '') {
+        document.getElementById('side-nav').className = 'is-open';
+        document.getElementById('toc-button-img').setAttribute('src','./close.svg');
+      } else {
+        document.getElementById('side-nav').className = '';
+        document.getElementById('toc-button-img').setAttribute('src','./menu.svg');
+      }
+  })
 });
 
 window.addEventListener( 'hashchange', function (e) {
@@ -139,38 +156,34 @@ function openMember() {
       <div class="navbar-header">
         <a href="https://winkjs.org/" title="wink" class="navbar-brand">
           <img src="https://winkjs.org/images/logo.svg">
-          wink
+          <span>wink</span>
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
-        <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
-        <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
-        <li><a href="http://github.com/winkjs">Github</a></li>
-        <li><a href="https://twitter.com/winkjs_org">Twitter</a></li>
-        <li><a href="https://winkjs.org/about.html" class="">About</a></li>
-      </ul>
+      <div class="sausage-links">
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="main-nav">
+          <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li>
+          <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li>
+          <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li>
+          <li><a href="http://github.com/winkjs">Github</a></li>
+          <li><a href="https://winkjs.org/about.html" class="">About</a></li>
+        </div>
+      </nav>
     </div>
 </header>
 
+<div id="toc-button">
+  <img src="./menu.svg" alt="" id="toc-button-img">
+</div>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
+<div class="content-container">
+  <div class="main-container">
+    <div id="main">
+        
+        <h1 class="page-title">Tagger</h1>
+        
 
-<nav >
-    
-    <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-pos-tagger" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Tagger.html">Tagger</a><ul class='methods'><li data-type='method'><a href="Tagger.html#defineConfig">defineConfig</a></li><li data-type='method'><a href="Tagger.html#tag">tag</a></li><li data-type='method'><a href="Tagger.html#tagRawTokens">tagRawTokens</a></li><li data-type='method'><a href="Tagger.html#tagSentence">tagSentence</a></li><li data-type='method'><a href="Tagger.html#updateLexicon">updateLexicon</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#posTagger">posTagger</a></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">Tagger</h1>
-    
-
-    
+        
 
 
 
@@ -179,9 +192,9 @@ function openMember() {
 
 <header>
     
-        <h2>
+        <!--<h2>
         Tagger
-        </h2>
+        </h2>-->
         
             <div class="class-description"><p>Tagger class</p></div>
         
@@ -196,7 +209,7 @@ function openMember() {
     
 
     
-    
+
     
 
      
@@ -213,7 +226,10 @@ function openMember() {
 
     
 
-    <h4 class="name" id="defineConfig"><span class="type-signature"></span>defineConfig<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="defineConfig">
+      defineConfig
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>defineConfig<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></div
 
     
 
@@ -222,12 +238,12 @@ function openMember() {
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line123">line 123</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -302,7 +318,7 @@ var myTagger.defineConfig( { lemma: false } );
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -320,6 +336,7 @@ var myTagger.defineConfig( { lemma: false } );
 <span class="param-type">object</span>
 
 
+
     </dd>
 </dl>
 
@@ -327,12 +344,17 @@ var myTagger.defineConfig( { lemma: false } );
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="tag"><span class="type-signature"></span>tag<span class="signature">(tokens)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
+    <h4 class="name" id="tag">
+      tag
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>tag<span class="signature">(tokens)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></div
 
     
 
@@ -341,12 +363,12 @@ var myTagger.defineConfig( { lemma: false } );
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line205">line 205</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -419,7 +441,7 @@ myTagger.tag( tokenize( 'I ate the entire pizza as I was feeling hungry.' ) );
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -444,13 +466,14 @@ myTagger.tag( tokenize( 'I ate the entire pizza as I was feeling hungry.' ) );
 
         <tr>
             
-                <td class="name"><code>tokens</code></td>
+                <td class="name">tokens</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Array.&lt;object></span>
+
 
 
             
@@ -484,7 +507,7 @@ standard.</p></td>
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -502,6 +525,7 @@ standard.</p></td>
 <span class="param-type">Array.&lt;object></span>
 
 
+
     </dd>
 </dl>
 
@@ -509,12 +533,17 @@ standard.</p></td>
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="tagRawTokens"><span class="type-signature"></span>tagRawTokens<span class="signature">(rawTokens)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
+    <h4 class="name" id="tagRawTokens">
+      tagRawTokens
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>tagRawTokens<span class="signature">(rawTokens)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></div
 
     
 
@@ -523,12 +552,12 @@ standard.</p></td>
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line253">line 253</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -602,7 +631,7 @@ myTagger.tagRawTokens( rawTokens );
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -627,13 +656,14 @@ myTagger.tagRawTokens( rawTokens );
 
         <tr>
             
-                <td class="name"><code>rawTokens</code></td>
+                <td class="name">rawTokens</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Array.&lt;string></span>
+
 
 
             
@@ -665,7 +695,7 @@ myTagger.tagRawTokens( rawTokens );
 
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -683,6 +713,7 @@ myTagger.tagRawTokens( rawTokens );
 <span class="param-type">Array.&lt;object></span>
 
 
+
     </dd>
 </dl>
 
@@ -690,12 +721,17 @@ myTagger.tagRawTokens( rawTokens );
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="tagSentence"><span class="type-signature"></span>tagSentence<span class="signature">(sentence)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
+    <h4 class="name" id="tagSentence">
+      tagSentence
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>tagSentence<span class="signature">(sentence)</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></div
 
     
 
@@ -704,12 +740,12 @@ myTagger.tagRawTokens( rawTokens );
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line299">line 299</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -782,7 +818,7 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -807,13 +843,14 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 
         <tr>
             
-                <td class="name"><code>sentence</code></td>
+                <td class="name">sentence</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
+
 
 
             
@@ -843,7 +880,7 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 
 
 
-<h5>Throws:</h5>
+<h5>Throws</h5>
 
         
 
@@ -864,6 +901,7 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 <span class="param-type">Error</span>
 
 
+
             </dd>
         </dl>
     </dt>
@@ -874,7 +912,7 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
     
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -892,6 +930,7 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 <span class="param-type">Array.&lt;object></span>
 
 
+
     </dd>
 </dl>
 
@@ -899,12 +938,17 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 
 
 
+<hr>
+
         
             
 
     
 
-    <h4 class="name" id="updateLexicon"><span class="type-signature"></span>updateLexicon<span class="signature">(lexicon)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    <h4 class="name" id="updateLexicon">
+      updateLexicon
+    </h4>
+    <div class="name-signature"><span class="type-signature"></span>updateLexicon<span class="signature">(lexicon)</span><span class="type-signature"> &rarr; {undefined}</span></div
 
     
 
@@ -913,12 +957,12 @@ myTagger.tagSentence( 'I will bear all the expenses.' );
 
 <dl class="details">
 
-    
+    <!--
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="wink-pos-tagger.js.html">wink-pos-tagger.js</a>, <a href="wink-pos-tagger.js.html#line98">line 98</a>
     </li></ul></dd>
-    
+    -->
 
     
 
@@ -976,7 +1020,7 @@ otherwise it added.</p>
 
 
 
-    <h5>Parameters:</h5>
+    <h5>Parameters</h5>
     
 
 <table class="params">
@@ -1001,13 +1045,14 @@ otherwise it added.</p>
 
         <tr>
             
-                <td class="name"><code>lexicon</code></td>
+                <td class="name">lexicon</td>
             
 
             <td class="type">
             
                 
 <span class="param-type">object</span>
+
 
 
             
@@ -1040,7 +1085,7 @@ normalized before updating the internal lexicon.</p></td>
 
 
 
-<h5>Throws:</h5>
+<h5>Throws</h5>
 
         
 
@@ -1061,6 +1106,7 @@ normalized before updating the internal lexicon.</p></td>
 <span class="param-type">Error</span>
 
 
+
             </dd>
         </dl>
     </dt>
@@ -1071,7 +1117,7 @@ normalized before updating the internal lexicon.</p></td>
     
 
 
-<h5>Returns:</h5>
+<h5>Returns</h5>
 
         
 <div class="param-desc">
@@ -1089,12 +1135,15 @@ normalized before updating the internal lexicon.</p></td>
 <span class="param-type">undefined</span>
 
 
+
     </dd>
 </dl>
 
     
 
 
+
+<hr>
 
         
     
@@ -1110,18 +1159,40 @@ normalized before updating the internal lexicon.</p></td>
 
 
 
-    
+        
+    </div>
+  </div>
+
+  <nav  id="side-nav">
+      
+      <h2><a href="index.html">Summary</a></h2><h2><a href="https://github.com/winkjs/wink-pos-tagger" target="_blank" >Github</a></h2><h3>Classes</h3><ul><li><a href="Tagger.html">Tagger</a><ul class='methods'><li data-type='method'><a href="Tagger.html#defineConfig">defineConfig</a></li><li data-type='method'><a href="Tagger.html#tag">tag</a></li><li data-type='method'><a href="Tagger.html#tagRawTokens">tagRawTokens</a></li><li data-type='method'><a href="Tagger.html#tagSentence">tagSentence</a></li><li data-type='method'><a href="Tagger.html#updateLexicon">updateLexicon</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#posTagger">posTagger</a></li></ul>
+  </nav>
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 27 2019 18:03:35 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Aug 12 2019 09:56:01 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
 
 
+
+<script src="https://embed.runkit.com"></script>
+<script type="text/javascript">
+  var els = document.getElementsByClassName("runkit");
+
+  Array.prototype.forEach.call(els, function(el) {
+    // Do stuff here
+    var source = el.innerHTML;
+    el.innerHTML = '';
+    var n = RunKit.createNotebook( {
+      element: el,
+      source: source
+    } );
+  });
+</script>
 </body>
 </html>
