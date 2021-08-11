@@ -10,6 +10,11 @@ Perform part-of-speech tagging of english sentences using **`wink-pos-tagger`**.
 
 Optimized for performance, it _pos-tags_ and _lemmatizes_ over **525,000 tokens per second** with an accuracy of **93.2%** on the standard WSJ22-24 test set. This was [benchmarked](https://github.com/bestiejs/benchmark.js) on 2.2 GHz Intel Core i7 machine with 16GB RAM using its `tagRawTokens()` API.
 
+<table><tr><td>
+    <h4>Use <a href="https://github.com/winkjs/wink-nlp">wink-nlp</a> if your are looking for an integrated NLP package✨</h4>
+    <a href="https://github.com/winkjs/wink-nlp">WinkNLP</a> is a <b>developer friendly</b> JavaScript library for Natural Language Processing. Designed specifically to make development of NLP solutions <b>easier</b> and <b>faster</b>, winkNLP is optimized for the right balance of performance and accuracy. The package can handle large amount of raw text at speeds <a href="https://github.com/winkjs/wink-nlp#speed--accuracy">over 525,000 tokens/second</a> for the <a href="https://winkjs.org/wink-nlp/processing-pipeline.html">entire NLP pipeline</a>.
+</td></tr></table>
+
 ### Installation
 
 Use [npm](https://www.npmjs.com/package/wink-pos-tagger) to install:
